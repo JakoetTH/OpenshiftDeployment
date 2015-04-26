@@ -26,6 +26,7 @@ public class Passenger implements PersonDetails, Serializable{
         this.address=builder.address;
         this.contact=builder.contact;
     }
+    @Override
     public String getID()
     {
         return this.ID;
@@ -40,10 +41,12 @@ public class Passenger implements PersonDetails, Serializable{
     {
         return this.lastName;
     }
+    @Override
     public String getAddress()
     {
         return this.address;
     }
+    @Override
     public String getContact()
     {
         return this.contact;
