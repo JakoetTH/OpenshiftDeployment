@@ -8,7 +8,8 @@ public class ClerkFactory {
                                             String firstName,
                                             String lastName,
                                             String address,
-                                            String contact)
+                                            String contact,
+                                            String position)
     {
         Clerk clerk = new Clerk
                 .Builder(ID)
@@ -16,6 +17,7 @@ public class ClerkFactory {
                 .lastName(lastName)
                 .address(address)
                 .contact(contact)
+                .position(position)
                 .build();
         return clerk;
     }

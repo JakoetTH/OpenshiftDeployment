@@ -12,7 +12,7 @@ public class testClerk {
     @Before
     public void setUp()
     {
-        clerk = ClerkFactory.createClerk("12345","Thawhir","Jakoet","15 Shiraaz Close","54321");
+        clerk = ClerkFactory.createClerk("12345","Thawhir","Jakoet","15 Shiraaz Close","54321","Ticketclerk");
     }
     @Test
     public void testCreateClerk() throws Exception
@@ -25,10 +25,10 @@ public class testClerk {
         newClerk = new Clerk
                 .Builder(clerk.getID())
                 .copy(clerk)
-                .lastName("Samsodien").build();
+                .position("Floorclerk").build();
 
         Assert.assertEquals("12345",newClerk.getID());
-        Assert.assertEquals("Samsodien",newClerk.getLastName());
+        Assert.assertEquals("Floorclerk",newClerk.getPosition());
     }
     @After
     public void tearDown()

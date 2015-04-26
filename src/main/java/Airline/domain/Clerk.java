@@ -12,6 +12,7 @@ public class Clerk implements PersonDetails, Serializable{
     private String lastName;
     private String address;
     private String contact;
+    private String position;
 
     private Clerk()
     {
@@ -25,6 +26,7 @@ public class Clerk implements PersonDetails, Serializable{
         this.lastName=builder.lastName;
         this.address=builder.address;
         this.contact=builder.contact;
+        this.position=builder.position;
     }
     @Override
     public String getID()
@@ -51,6 +53,9 @@ public class Clerk implements PersonDetails, Serializable{
     {
         return this.contact;
     }
+    public String getPosition() {
+        return this.position;
+    }
 
     public static class Builder
     {
@@ -59,6 +64,7 @@ public class Clerk implements PersonDetails, Serializable{
         private String lastName;
         private String address;
         private String contact;
+        private String position;
 
         public Builder(String ID)
         {
@@ -88,6 +94,11 @@ public class Clerk implements PersonDetails, Serializable{
             this.contact=contact;
             return this;
         }
+        public Builder position(String position)
+        {
+            this.position=position;
+            return this;
+        }
 
         public Builder copy(Clerk clerk)
         {
@@ -96,6 +107,7 @@ public class Clerk implements PersonDetails, Serializable{
             this.lastName=clerk.getLastName();
             this.address=clerk.getAddress();
             this.contact=clerk.getContact();
+            this.position=clerk.getPosition();
             return this;
         }
 
