@@ -10,6 +10,8 @@ import java.util.Date;
  */
 @Entity
 public class Flight implements FlightDisplay, Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String ID;
     private Date departureTime;
     private Date arrivalTime;

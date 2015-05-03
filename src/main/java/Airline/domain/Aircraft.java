@@ -5,7 +5,10 @@ import java.io.Serializable;
 /**
  * Created by student on 2015/04/24.
  */
+@Entity
 public class Aircraft implements AircraftDetails, Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String ID;
     private String aircraftType;
     private int seats;

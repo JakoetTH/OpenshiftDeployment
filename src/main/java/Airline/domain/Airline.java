@@ -7,6 +7,8 @@ import java.io.Serializable;
  */
 @Entity
 public class Airline implements AirlineDetails, Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String ID;
     private String name;
     private String nationality;

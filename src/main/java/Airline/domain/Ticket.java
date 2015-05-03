@@ -7,6 +7,8 @@ import java.io.Serializable;
  */
 @Entity
 public class Ticket implements TicketDetails, Serializable{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String ID;
     private float price;
     private String ticketClass;

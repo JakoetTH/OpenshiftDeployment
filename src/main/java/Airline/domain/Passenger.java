@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 @Entity
 public class Passenger implements PersonDetails, Serializable{
+    @Id
     private String ID;
     private String firstName;
     private String lastName;
