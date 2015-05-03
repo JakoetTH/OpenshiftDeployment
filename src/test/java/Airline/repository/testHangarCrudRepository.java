@@ -18,7 +18,7 @@ public class testHangarCrudRepository extends AbstractTestNGSpringContextTests{
     HangarRepository repository;
 
     @Test
-    public void testCreate()
+    public void testCreate() throws Exception
     {
         Hangar hangar = new Hangar.Builder("12345")
                 .status("Empty")
@@ -30,14 +30,14 @@ public class testHangarCrudRepository extends AbstractTestNGSpringContextTests{
     }
 
     @Test(dependsOnMethods = "testCreate")
-    public void testRead()
+    public void testRead() throws Exception
     {
         Hangar hangar = repository.findOne(id);
         Assert.assertEquals("12345", hangar.getID());
     }
 
     @Test(dependsOnMethods = "testRead")
-    public void testUpdate()
+    public void testUpdate() throws Exception
     {
         Hangar hangar = repository.findOne(id);
         Hangar newHangar = new Hangar.Builder(hangar.getID())
@@ -51,7 +51,7 @@ public class testHangarCrudRepository extends AbstractTestNGSpringContextTests{
     }
 
     @Test(dependsOnMethods = "testUpdate")
-    public void testDelete()
+    public void testDelete() throws Exception
     {
         Hangar hangar = repository.findOne(id);
         repository.delete(hangar);

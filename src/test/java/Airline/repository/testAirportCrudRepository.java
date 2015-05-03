@@ -18,7 +18,7 @@ public class testAirportCrudRepository extends AbstractTestNGSpringContextTests{
     AirportRepository repository;
 
     @Test
-    public void testCreate()
+    public void testCreate() throws Exception
     {
         Airport airport = new Airport.Builder("12345")
                 .name("Cape Town Airport")
@@ -32,14 +32,14 @@ public class testAirportCrudRepository extends AbstractTestNGSpringContextTests{
     }
 
     @Test(dependsOnMethods = "testCreate")
-    public void testRead()
+    public void testRead() throws Exception
     {
         Airport airport = repository.findOne(id);
         Assert.assertEquals("12345",airport.getID());
     }
 
     @Test(dependsOnMethods = "testRead")
-    public void testUpdate()
+    public void testUpdate() throws Exception
     {
         Airport airport = repository.findOne(id);
         Airport newAirport = new Airport.Builder(airport.getID())
@@ -55,7 +55,7 @@ public class testAirportCrudRepository extends AbstractTestNGSpringContextTests{
     }
 
     @Test(dependsOnMethods = "testUpdate")
-    public void testDelete()
+    public void testDelete() throws Exception
     {
         Airport airport = repository.findOne(id);
         repository.delete(airport);

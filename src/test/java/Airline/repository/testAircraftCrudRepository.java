@@ -18,7 +18,7 @@ public class testAircraftCrudRepository extends AbstractTestNGSpringContextTests
     AircraftRepository repository;
 
     @Test
-    public void testCreate()
+    public void testCreate()  throws Exception
     {
         Aircraft aircraft = new Aircraft.Builder("12345")
                 .aircraftType("Boeing-474")
@@ -32,14 +32,14 @@ public class testAircraftCrudRepository extends AbstractTestNGSpringContextTests
     }
 
     @Test(dependsOnMethods = "testCreate")
-    public void testRead()
+    public void testRead()  throws Exception
     {
         Aircraft aircraft = repository.findOne(id);
         Assert.assertEquals("12345",aircraft.getID());
     }
 
     @Test(dependsOnMethods = "testRead")
-    public void testUpdate()
+    public void testUpdate()  throws Exception
     {
         Aircraft aircraft = repository.findOne(id);
         Aircraft newAircraft = new Aircraft.Builder(aircraft.getID())
@@ -55,7 +55,7 @@ public class testAircraftCrudRepository extends AbstractTestNGSpringContextTests
     }
 
     @Test(dependsOnMethods = "testUpdate")
-    public void testDelete()
+    public void testDelete()  throws Exception
     {
         Aircraft aircraft = repository.findOne(id);
         repository.delete(aircraft);

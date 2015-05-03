@@ -18,7 +18,7 @@ public class testClerkCrudRepository extends AbstractTestNGSpringContextTests{
     ClerkRepository repository;
 
     @Test
-    public void testCreate()
+    public void testCreate() throws Exception
     {
         Clerk clerk = new Clerk.Builder("12345")
                 .firstName("Thawhir")
@@ -33,14 +33,14 @@ public class testClerkCrudRepository extends AbstractTestNGSpringContextTests{
     }
 
     @Test(dependsOnMethods = "testCreate")
-    public void testRead()
+    public void testRead() throws Exception
     {
         Clerk clerk = repository.findOne(id);
         Assert.assertEquals("12345",clerk.getID());
     }
 
     @Test(dependsOnMethods = "testRead")
-    public void testUpdate()
+    public void testUpdate() throws Exception
     {
         Clerk clerk = repository.findOne(id);
         Clerk newClerk = new Clerk.Builder(clerk.getID())
@@ -57,7 +57,7 @@ public class testClerkCrudRepository extends AbstractTestNGSpringContextTests{
     }
 
     @Test(dependsOnMethods = "testUpdate")
-    public void testDelete()
+    public void testDelete() throws Exception
     {
         Clerk clerk = repository.findOne(id);
         repository.delete(clerk);

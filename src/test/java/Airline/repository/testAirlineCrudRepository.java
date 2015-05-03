@@ -18,7 +18,7 @@ public class testAirlineCrudRepository extends AbstractTestNGSpringContextTests{
     AirlineRepository repository;
 
     @Test
-    public void testCreate()
+    public void testCreate() throws Exception
     {
         Airline airline = new Airline.Builder("12345")
                 .name("Mango")
@@ -30,14 +30,14 @@ public class testAirlineCrudRepository extends AbstractTestNGSpringContextTests{
     }
 
     @Test(dependsOnMethods = "testCreate")
-    public void testRead()
+    public void testRead() throws Exception
     {
         Airline airline = repository.findOne(id);
         Assert.assertEquals("12345",airline.getID());
     }
 
     @Test(dependsOnMethods = "testRead")
-    public void testUpdate()
+    public void testUpdate() throws Exception
     {
         Airline airline = repository.findOne(id);
         Airline newAirline = new Airline.Builder(airline.getID())
@@ -51,7 +51,7 @@ public class testAirlineCrudRepository extends AbstractTestNGSpringContextTests{
     }
 
     @Test(dependsOnMethods = "testUpdate")
-    public void testDelete()
+    public void testDelete() throws Exception
     {
         Airline airline = repository.findOne(id);
         repository.delete(airline);

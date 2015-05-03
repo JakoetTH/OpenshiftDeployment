@@ -18,7 +18,7 @@ public class testRunwayCrudRepository extends AbstractTestNGSpringContextTests{
     RunwayRepository repository;
 
     @Test
-    public void testCreate()
+    public void testCreate() throws Exception
     {
         Runway runway = new Runway.Builder("12345")
                 .status("available")
@@ -30,14 +30,14 @@ public class testRunwayCrudRepository extends AbstractTestNGSpringContextTests{
     }
 
     @Test(dependsOnMethods = "testCreate")
-    public void testRead()
+    public void testRead() throws Exception
     {
         Runway runway = repository.findOne(id);
         Assert.assertEquals("12345",runway.getID());
     }
 
     @Test(dependsOnMethods = "testRead")
-    public void testUpdate()
+    public void testUpdate() throws Exception
     {
         Runway runway = repository.findOne(id);
         Runway newRunway = new Runway.Builder(runway.getID())
@@ -51,7 +51,7 @@ public class testRunwayCrudRepository extends AbstractTestNGSpringContextTests{
     }
 
     @Test(dependsOnMethods = "testUpdate")
-    public void testDelete()
+    public void testDelete() throws Exception
     {
         Runway runway = repository.findOne(id);
         repository.delete(runway);

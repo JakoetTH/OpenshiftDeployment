@@ -19,7 +19,7 @@ public class testFlightCrudRepository extends AbstractTestNGSpringContextTests{
     FlightRepository repository;
 
     @Test
-    public void testCreate()
+    public void testCreate() throws Exception
     {
         Flight flight = new Flight.Builder("12345")
                 .departureTime(date)
@@ -33,14 +33,14 @@ public class testFlightCrudRepository extends AbstractTestNGSpringContextTests{
     }
 
     @Test(dependsOnMethods = "testCreate")
-    public void testRead()
+    public void testRead() throws Exception
     {
         Flight flight = repository.findOne(id);
         Assert.assertEquals("12345",flight.getID());
     }
 
     @Test(dependsOnMethods = "testRead")
-    public void testUpdate()
+    public void testUpdate() throws Exception
     {
         Flight flight = repository.findOne(id);
         Flight newFlight = new Flight.Builder(flight.getID())
@@ -56,7 +56,7 @@ public class testFlightCrudRepository extends AbstractTestNGSpringContextTests{
     }
 
     @Test(dependsOnMethods = "testUpdate")
-    public void testDelete()
+    public void testDelete() throws Exception
     {
         Flight flight = repository.findOne(id);
         repository.delete(flight);

@@ -18,7 +18,7 @@ public class testTicketCrudRepository extends AbstractTestNGSpringContextTests{
     TicketRepository repository;
 
     @Test
-    public void testCreate()
+    public void testCreate() throws Exception
     {
         Ticket ticket = new Ticket.Builder("12345")
                 .price(200)
@@ -33,14 +33,14 @@ public class testTicketCrudRepository extends AbstractTestNGSpringContextTests{
     }
 
     @Test(dependsOnMethods = "testCreate")
-    public void testRead()
+    public void testRead() throws Exception
     {
         Ticket ticket = repository.findOne(id);
         Assert.assertEquals("12345",ticket.getID());
     }
 
     @Test(dependsOnMethods = "testRead")
-    public void testUpdate()
+    public void testUpdate() throws Exception
     {
         Ticket ticket = repository.findOne(id);
         Ticket newTicket = new Ticket.Builder(ticket.getID())
@@ -57,7 +57,7 @@ public class testTicketCrudRepository extends AbstractTestNGSpringContextTests{
     }
 
     @Test(dependsOnMethods = "testUpdate")
-    public void testDelete()
+    public void testDelete() throws Exception
     {
         Ticket ticket = repository.findOne(id);
         repository.delete(ticket);
