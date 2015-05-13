@@ -17,6 +17,9 @@ public class Flight implements FlightDisplay, Serializable{
     private Date arrivalTime;
     private String departureLocation;
     private String arrivalLocation;
+    //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    //@JoinColumn(name="ID")
+    //private List<Ticket> tickets;
     private Flight()
     {
 

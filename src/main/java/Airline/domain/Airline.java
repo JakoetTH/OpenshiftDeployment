@@ -12,6 +12,9 @@ public class Airline implements AirlineDetails, Serializable{
     private String ID;
     private String name;
     private String nationality;
+    //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    //@JoinColumn(name="ID")
+    //private List<Aircraft> aircrafts;
 
     private Airline()
     {

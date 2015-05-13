@@ -13,6 +13,9 @@ public class Passenger implements PersonDetails, Serializable{
     private String lastName;
     private String address;
     private String contact;
+    //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    //@JoinColumn(name="ID")
+    //private List<Ticket> tickets;
 
     private Passenger()
     {

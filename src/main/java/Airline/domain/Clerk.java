@@ -14,6 +14,10 @@ public class Clerk implements PersonDetails, Serializable{
     private String address;
     private String contact;
     private String position;
+    //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    //@JoinColumn(name="ID")
+    //private List<Ticket> tickets;
+
 
     private Clerk()
     {

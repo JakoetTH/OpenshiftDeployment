@@ -14,6 +14,12 @@ public class Airport implements AirportDetails, Serializable {
     private String country;
     private String city;
     private String type;
+    //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    //@JoinColumn(name="ID")
+    //private List<Hangar> hangars;
+    //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    //@JoinColumn(name="ID")
+    //private List<Runway> runways;
 
     private Airport()
     {
