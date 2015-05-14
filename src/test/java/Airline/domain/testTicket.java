@@ -12,7 +12,7 @@ public class testTicket {
     @Before
     public void setUp()
     {
-        ticket = TicketFactory.createTicket("12345",123,"Business","1","2","2");
+        ticket = TicketFactory.createTicket("12345",123,"Business");
     }
     @Test
     public void testCreateTicket() throws Exception

@@ -23,9 +23,6 @@ public class testTicketCrudRepository extends AbstractTestNGSpringContextTests{
         Ticket ticket = new Ticket.Builder("12345")
                 .price(200)
                 .ticketClass("First Class")
-                .clerkID("12345")
-                .passengerID("12345")
-                .flightID("12345")
                 .build();
         repository.save(ticket);
         id = ticket.getID();
@@ -46,9 +43,6 @@ public class testTicketCrudRepository extends AbstractTestNGSpringContextTests{
         Ticket newTicket = new Ticket.Builder(ticket.getID())
                 .price(300)
                 .ticketClass("Business Class")
-                .clerkID("12345")
-                .passengerID("12345")
-                .flightID("12345")
                 .build();
         repository.save(newTicket);
 
