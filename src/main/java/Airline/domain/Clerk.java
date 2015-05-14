@@ -2,6 +2,8 @@ package Airline.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 /**
  * Created by student on 2015/04/24.
  */
@@ -14,9 +16,9 @@ public class Clerk implements PersonDetails, Serializable{
     private String address;
     private String contact;
     private String position;
-    //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    //@JoinColumn(name="ID")
-    //private List<Ticket> tickets;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name="ticket_id")
+    private List<Ticket> tickets;
 
 
     private Clerk()
@@ -32,6 +34,7 @@ public class Clerk implements PersonDetails, Serializable{
         this.address=builder.address;
         this.contact=builder.contact;
         this.position=builder.position;
+        this.tickets=builder.tickets;
     }
     @Override
     public String getID()
@@ -61,6 +64,9 @@ public class Clerk implements PersonDetails, Serializable{
     public String getPosition() {
         return this.position;
     }
+    public List<Ticket> getTickets() {
+        return this.tickets;
+    }
 
     public static class Builder
     {
@@ -70,6 +76,7 @@ public class Clerk implements PersonDetails, Serializable{
         private String address;
         private String contact;
         private String position;
+        private List<Ticket> tickets;
 
         public Builder(String ID)
         {
@@ -105,6 +112,12 @@ public class Clerk implements PersonDetails, Serializable{
             return this;
         }
 
+        public Builder tickets(List<Ticket> tickets)
+        {
+            this.tickets=tickets;
+            return this;
+        }
+
         public Builder copy(Clerk clerk)
         {
             this.ID=clerk.getID();
@@ -113,6 +126,7 @@ public class Clerk implements PersonDetails, Serializable{
             this.address=clerk.getAddress();
             this.contact=clerk.getContact();
             this.position=clerk.getPosition();
+            this.tickets=clerk.getTickets();
             return this;
         }
 

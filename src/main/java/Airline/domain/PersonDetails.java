@@ -1,5 +1,7 @@
 package Airline.domain;
 
+import java.util.List;
+
 /**
  * Created by student on 2015/04/24.
  */

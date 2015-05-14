@@ -1,7 +1,10 @@
 package Airline.conf;
 
 import Airline.domain.Flight;
+import Airline.domain.Ticket;
+
 import java.util.Date;
+import java.util.List;
 
 public class FlightFactory {
 
@@ -9,7 +12,8 @@ public class FlightFactory {
                                     Date departureTime,
                                     Date arrivalTime,
                                     String departureLocation,
-                                    String arrivalLocation)
+                                    String arrivalLocation,
+                                    List<Ticket> tickets)
     {
         Flight flight = new Flight
                 .Builder(ID)
@@ -17,6 +21,7 @@ public class FlightFactory {
                 .arrivalTime(arrivalTime)
                 .departureLocation(departureLocation)
                 .arrivalLocation(arrivalLocation)
+                .tickets(tickets)
                 .build();
         return flight;
     }

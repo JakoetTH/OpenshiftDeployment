@@ -2,6 +2,8 @@ package Airline.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 /**
  * Created by student on 2015/04/24.
  */
@@ -12,9 +14,9 @@ public class Airline implements AirlineDetails, Serializable{
     private String ID;
     private String name;
     private String nationality;
-    //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    //@JoinColumn(name="ID")
-    //private List<Aircraft> aircrafts;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name="airline_id")
+    private List<Aircraft> aircrafts;
 
     private Airline()
     {
@@ -26,6 +28,7 @@ public class Airline implements AirlineDetails, Serializable{
         this.ID=builder.ID;
         this.name=builder.name;
         this.nationality=builder.nationality;
+        this.aircrafts = builder.aircrafts;
     }
     @Override
     public String getID()
@@ -42,12 +45,18 @@ public class Airline implements AirlineDetails, Serializable{
     {
         return this.nationality;
     }
+    @Override
+    public List<Aircraft> getAircrafts()
+    {
+        return this.aircrafts;
+    }
 
     public static class Builder
     {
         private String ID;
         private String name;
         private String nationality;
+        private List<Aircraft> aircrafts;
 
         public Builder(String ID)
         {
@@ -66,11 +75,18 @@ public class Airline implements AirlineDetails, Serializable{
             return this;
         }
 
+        public Builder aircraft(List<Aircraft> aircrafts)
+        {
+            this.aircrafts = aircrafts;
+            return this;
+        }
+
         public Builder copy(Airline airline)
         {
             this.ID=airline.getID();
             this.name=airline.getAirlineName();
             this.nationality=airline.getNationality();
+            this.aircrafts=airline.getAircrafts();
             return this;
         }
 

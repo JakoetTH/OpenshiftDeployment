@@ -7,13 +7,16 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.After;
 
+import java.util.List;
+
 public class testAirline {
     private Airline airline;
     private Airline newAirline;
+    private List<Aircraft> aircrafts;
     @Before
     public void setUp()
     {
-        airline = AirlineFactory.createAirline("12345","Mango","South African");
+        airline = AirlineFactory.createAirline("12345","Mango","South African",aircrafts);
     }
     @Test
     public void testCreateAirline() throws Exception

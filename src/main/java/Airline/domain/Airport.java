@@ -2,6 +2,8 @@ package Airline.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 /**
  * Created by student on 2015/04/24.
  */
@@ -14,12 +16,12 @@ public class Airport implements AirportDetails, Serializable {
     private String country;
     private String city;
     private String type;
-    //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    //@JoinColumn(name="ID")
-    //private List<Hangar> hangars;
-    //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    //@JoinColumn(name="ID")
-    //private List<Runway> runways;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name="airport_id")
+    private List<Hangar> hangars;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name="airport_id")
+    private List<Runway> runways;
 
     private Airport()
     {
@@ -33,6 +35,8 @@ public class Airport implements AirportDetails, Serializable {
         this.country=builder.country;
         this.city=builder.city;
         this.type=builder.type;
+        this.hangars=builder.hangars;
+        this.runways=builder.runways;
     }
     @Override
     public String getID()
@@ -59,6 +63,16 @@ public class Airport implements AirportDetails, Serializable {
     {
         return this.type;
     }
+    @Override
+    public List<Hangar> getHangars()
+    {
+        return this.hangars;
+    }
+    @Override
+    public List<Runway> getRunways()
+    {
+        return this.runways;
+    }
 
     public static class Builder
     {
@@ -67,6 +81,8 @@ public class Airport implements AirportDetails, Serializable {
         private String country;
         private String city;
         private String type;
+        private List<Hangar> hangars;
+        private List<Runway> runways;
 
         public Builder(String ID)
         {
@@ -97,6 +113,18 @@ public class Airport implements AirportDetails, Serializable {
             return this;
         }
 
+        public Builder hangars(List<Hangar> hangars)
+        {
+            this.hangars=hangars;
+            return this;
+        }
+
+        public Builder runways(List<Runway> runways)
+        {
+            this.runways=runways;
+            return this;
+        }
+
         public Builder copy(Airport airport)
         {
             this.ID=airport.getID();
@@ -104,6 +132,8 @@ public class Airport implements AirportDetails, Serializable {
             this.country=airport.getCountry();
             this.city=airport.getCity();
             this.type=airport.getType();
+            this.hangars=airport.getHangars();
+            this.runways=airport.getRunways();
             return this;
         }
 

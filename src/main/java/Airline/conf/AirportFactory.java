@@ -1,6 +1,10 @@
 package Airline.conf;
 
 import Airline.domain.Airport;
+import Airline.domain.Hangar;
+import Airline.domain.Runway;
+
+import java.util.List;
 
 public class AirportFactory {
 
@@ -8,7 +12,9 @@ public class AirportFactory {
                                             String name,
                                             String country,
                                             String city,
-                                            String type)
+                                            String type,
+                                            List<Hangar> hangars,
+                                            List<Runway> runways)
     {
         Airport airport = new Airport
                 .Builder(ID)
@@ -16,6 +22,8 @@ public class AirportFactory {
                 .country(country)
                 .city(city)
                 .type(type)
+                .hangars(hangars)
+                .runways(runways)
                 .build();
         return airport;
     }

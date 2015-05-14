@@ -12,7 +12,7 @@ public class testAircraft {
     @Before
     public void setUp()
     {
-        aircraft = AircraftFactory.createAircraft("12345","Boeing-474",200,5000,"321");
+        aircraft = AircraftFactory.createAircraft("12345","Boeing-474",200,5000);
     }
     @Test
     public void testCreateAircraft() throws Exception

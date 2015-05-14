@@ -7,13 +7,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.After;
 
+import java.util.List;
+
 public class testAirport {
     private Airport airport;
     private Airport newAirport;
+    private List<Hangar> hangars;
+    private List<Runway> runways;
     @Before
     public void setUp()
     {
-        airport = AirportFactory.createAirport("12345","South African National Airport","South Africa","Cape Town","public");
+        airport = AirportFactory.createAirport("12345","South African National Airport","South Africa","Cape Town","public",hangars,runways);
     }
     @Test
     public void testCreateAirport() throws Exception

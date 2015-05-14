@@ -7,7 +7,4 @@ public interface TicketDetails {
     public String getID();
     public float getPrice();
     public String getTicketClass();
-    public String getClerkID();
-    public String getPassengerID();
-    public String getFlightID();
 }

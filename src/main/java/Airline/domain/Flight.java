@@ -4,6 +4,7 @@ package Airline.domain;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by student on 2015/04/24.
@@ -17,9 +18,10 @@ public class Flight implements FlightDisplay, Serializable{
     private Date arrivalTime;
     private String departureLocation;
     private String arrivalLocation;
-    //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    //@JoinColumn(name="ID")
-    //private List<Ticket> tickets;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name="ticket_id")
+    private List<Ticket> tickets;
+
     private Flight()
     {
 
@@ -32,6 +34,7 @@ public class Flight implements FlightDisplay, Serializable{
         this.arrivalTime=builder.arrivalTime;
         this.departureLocation=builder.departureLocation;
         this.arrivalLocation=builder.arrivalLocation;
+        this.tickets=builder.tickets;
     }
     @Override
     public String getID()
@@ -68,6 +71,11 @@ public class Flight implements FlightDisplay, Serializable{
     {
         return "";
     }
+    @Override
+    public List<Ticket> getTickets()
+    {
+        return this.tickets;
+    }
 
     public static class Builder
     {
@@ -76,6 +84,7 @@ public class Flight implements FlightDisplay, Serializable{
         private Date arrivalTime;
         private String departureLocation;
         private String arrivalLocation;
+        private List<Ticket> tickets;
 
         public Builder(String ID)
         {
@@ -106,6 +115,12 @@ public class Flight implements FlightDisplay, Serializable{
             return this;
         }
 
+        public Builder tickets(List<Ticket> tickets)
+        {
+            this.tickets=tickets;
+            return this;
+        }
+
         public Builder copy(Flight flight)
         {
             this.ID=flight.getID();
@@ -113,6 +128,7 @@ public class Flight implements FlightDisplay, Serializable{
             this.arrivalTime=flight.getArrivalTime();
             this.departureLocation=flight.getDepartureLocation();
             this.arrivalLocation=flight.getArrivalLocation();
+            this.tickets=flight.getTickets();
             return this;
         }
 

@@ -2,8 +2,11 @@ package Airline.repository;
 
 import Airline.App;
 import Airline.domain.Flight;
+import Airline.domain.Ticket;
 import org.junit.Assert;
 import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -15,6 +18,7 @@ import org.testng.annotations.Test;
 public class testFlightCrudRepository extends AbstractTestNGSpringContextTests{
     private String id;
     private Date date = new Date();
+    private List<Ticket> tickets;
     @Autowired
     FlightRepository repository;
 
@@ -26,6 +30,7 @@ public class testFlightCrudRepository extends AbstractTestNGSpringContextTests{
                 .arrivalTime(date)
                 .departureLocation("Johannesburg")
                 .arrivalLocation("Cape Town")
+                .tickets(tickets)
                 .build();
         repository.save(flight);
         id = flight.getID();
@@ -48,6 +53,7 @@ public class testFlightCrudRepository extends AbstractTestNGSpringContextTests{
                 .arrivalTime(date)
                 .departureLocation("Johannesburg")
                 .arrivalLocation("London")
+                .tickets(tickets)
                 .build();
         repository.save(newFlight);
 

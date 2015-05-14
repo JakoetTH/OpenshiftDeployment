@@ -2,6 +2,8 @@ package Airline.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 /**
  * Created by student on 2015/04/24.
  */
@@ -13,9 +15,9 @@ public class Passenger implements PersonDetails, Serializable{
     private String lastName;
     private String address;
     private String contact;
-    //@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    //@JoinColumn(name="ID")
-    //private List<Ticket> tickets;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name="ticket_id")
+    private List<Ticket> tickets;
 
     private Passenger()
     {
@@ -29,6 +31,7 @@ public class Passenger implements PersonDetails, Serializable{
         this.lastName=builder.lastName;
         this.address=builder.address;
         this.contact=builder.contact;
+        this.tickets=builder.tickets;
     }
     @Override
     public String getID()
@@ -55,6 +58,9 @@ public class Passenger implements PersonDetails, Serializable{
     {
         return this.contact;
     }
+    public List<Ticket> getTickets(){
+        return this.tickets;
+    }
 
     public static class Builder
     {
@@ -63,6 +69,7 @@ public class Passenger implements PersonDetails, Serializable{
         private String lastName;
         private String address;
         private String contact;
+        private List<Ticket> tickets;
 
         public Builder(String ID)
         {
@@ -93,6 +100,12 @@ public class Passenger implements PersonDetails, Serializable{
             return this;
         }
 
+        public Builder tickets(List<Ticket> tickets)
+        {
+            this.tickets=tickets;
+            return this;
+        }
+
         public Builder copy(Passenger passenger)
         {
             this.ID=passenger.getID();
@@ -100,6 +113,7 @@ public class Passenger implements PersonDetails, Serializable{
             this.lastName=passenger.getLastName();
             this.address=passenger.getAddress();
             this.contact=passenger.getContact();
+            this.tickets=passenger.getTickets();
             return this;
         }
 

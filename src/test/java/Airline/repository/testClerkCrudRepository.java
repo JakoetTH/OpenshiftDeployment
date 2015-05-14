@@ -2,17 +2,20 @@ package Airline.repository;
 
 import Airline.App;
 import Airline.domain.Clerk;
+import Airline.domain.Ticket;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.testng.annotations.Test;
+import java.util.List;
 
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
 public class testClerkCrudRepository extends AbstractTestNGSpringContextTests{
     private String id;
+    private List<Ticket> tickets;
 
     @Autowired
     ClerkRepository repository;
@@ -26,6 +29,7 @@ public class testClerkCrudRepository extends AbstractTestNGSpringContextTests{
                 .address("15 Shiraaz Close")
                 .contact("021 123 4567")
                 .position("Ticket Clerk")
+                .tickets(tickets)
                 .build();
         repository.save(clerk);
         id = clerk.getID();
@@ -49,6 +53,7 @@ public class testClerkCrudRepository extends AbstractTestNGSpringContextTests{
                 .address("15 Shiraaz Close")
                 .contact("021 765 4321")
                 .position("Ticket Clerk")
+                .tickets(tickets)
                 .build();
         repository.save(newClerk);
 

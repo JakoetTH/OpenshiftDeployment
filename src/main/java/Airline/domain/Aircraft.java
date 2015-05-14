@@ -13,7 +13,6 @@ public class Aircraft implements AircraftDetails, Serializable{
     private String aircraftType;
     private int seats;
     private int fuelCapacity;
-    private String airlineID;
 
     private Aircraft()
     {
@@ -26,7 +25,6 @@ public class Aircraft implements AircraftDetails, Serializable{
         this.aircraftType=builder.aircraftType;
         this.seats=builder.seats;
         this.fuelCapacity=builder.fuelCapacity;
-        this.airlineID=builder.airlineID;
     }
     @Override
     public String getID()
@@ -48,11 +46,6 @@ public class Aircraft implements AircraftDetails, Serializable{
     {
         return this.fuelCapacity;
     }
-    @Override
-    public String getAirlineID()
-    {
-        return this.airlineID;
-    }
 
     public static class Builder
     {
@@ -60,7 +53,6 @@ public class Aircraft implements AircraftDetails, Serializable{
         private String aircraftType;
         private int seats;
         private int fuelCapacity;
-        private String airlineID;
 
         public Builder(String ID)
         {
@@ -85,19 +77,12 @@ public class Aircraft implements AircraftDetails, Serializable{
             return this;
         }
 
-        public Builder airlineID(String airlineID)
-        {
-            this.airlineID=airlineID;
-            return this;
-        }
-
         public Builder copy(Aircraft aircraft)
         {
             this.ID=aircraft.getID();
             this.aircraftType=aircraft.getAircraftType();
             this.seats=aircraft.getSeats();
             this.fuelCapacity=aircraft.getFuelCapacity();
-            this.airlineID=aircraft.getAirlineID();
             return this;
         }
 

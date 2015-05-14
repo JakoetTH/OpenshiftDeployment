@@ -1,6 +1,7 @@
 package Airline.repository;
 
 import Airline.App;
+import Airline.domain.Aircraft;
 import Airline.domain.Airline;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +10,13 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
 public class testAirlineCrudRepository extends AbstractTestNGSpringContextTests{
     private String id;
+    private List<Aircraft> aircrafts;
 
     @Autowired
     AirlineRepository repository;
@@ -23,6 +27,7 @@ public class testAirlineCrudRepository extends AbstractTestNGSpringContextTests{
         Airline airline = new Airline.Builder("12345")
                 .name("Mango")
                 .nationality("South Africa")
+                .aircraft(aircrafts)
                 .build();
         repository.save(airline);
         id = airline.getID();
@@ -43,6 +48,7 @@ public class testAirlineCrudRepository extends AbstractTestNGSpringContextTests{
         Airline newAirline = new Airline.Builder(airline.getID())
                 .name("Mango Advanced")
                 .nationality("South Africa")
+                .aircraft(aircrafts)
                 .build();
         repository.save(newAirline);
 

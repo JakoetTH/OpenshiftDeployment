@@ -6,15 +6,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.After;
 import java.util.Date;
+import java.util.List;
 
 public class testFlight {
     private Flight flight;
     private Flight newFlight;
+    private List<Ticket> tickets;
     private Date date = new Date();
     @Before
     public void setUp()
     {
-        flight = FlightFactory.createFlight("12345",date,date,"Johannesburg","Belgium");
+        flight = FlightFactory.createFlight("12345",date,date,"Johannesburg","Belgium",tickets);
     }
     @Test
     public void testCreateFlight() throws Exception

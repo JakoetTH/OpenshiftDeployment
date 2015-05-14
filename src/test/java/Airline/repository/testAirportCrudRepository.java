@@ -2,17 +2,22 @@ package Airline.repository;
 
 import Airline.App;
 import Airline.domain.Airport;
+import Airline.domain.Hangar;
+import Airline.domain.Runway;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.testng.annotations.Test;
+import java.util.List;
 
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
 public class testAirportCrudRepository extends AbstractTestNGSpringContextTests{
     private String id;
+    private List<Hangar> hangars;
+    private List<Runway> runways;
 
     @Autowired
     AirportRepository repository;

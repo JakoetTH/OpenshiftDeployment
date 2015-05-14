@@ -8,6 +8,5 @@ public interface AircraftDetails {
     public String getAircraftType();
     public int getSeats();
     public int getFuelCapacity();
-    public String getAirlineID();
 
 }

@@ -24,7 +24,6 @@ public class testAircraftCrudRepository extends AbstractTestNGSpringContextTests
                 .aircraftType("Boeing-474")
                 .seats(200)
                 .fuelCapacity(5000)
-                .airlineID("321")
                 .build();
         repository.save(aircraft);
         id = aircraft.getID();
@@ -46,7 +45,6 @@ public class testAircraftCrudRepository extends AbstractTestNGSpringContextTests
                 .aircraftType("Boeing-474")
                 .seats(300)
                 .fuelCapacity(5000)
-                .airlineID("321")
                 .build();
         repository.save(newAircraft);
 

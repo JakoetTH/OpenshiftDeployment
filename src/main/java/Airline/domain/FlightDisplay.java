@@ -1,6 +1,7 @@
 package Airline.domain;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by student on 2015/04/26.
@@ -13,5 +14,6 @@ public interface FlightDisplay {
     public String getArrivalLocation();
     public String displayFlightTimes();
     public String displayFlightLocations();
+    public List<Ticket> getTickets();
 
 }
