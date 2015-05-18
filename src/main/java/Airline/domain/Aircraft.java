@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Entity
 public class Aircraft implements AircraftDetails, Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private String ID;
     private String aircraftType;
     private int seats;

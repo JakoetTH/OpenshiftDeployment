@@ -10,12 +10,12 @@ import java.util.List;
 @Entity
 public class Airline implements AirlineDetails, Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private String ID;
     private String name;
     private String nationality;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name="airline_id")
+    @JoinColumn(name="ID")
     private List<Aircraft> aircrafts;
 
     private Airline()

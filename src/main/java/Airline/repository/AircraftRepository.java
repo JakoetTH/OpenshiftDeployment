@@ -4,5 +4,5 @@ import Airline.domain.Aircraft;
 import org.springframework.data.repository.CrudRepository;
 
 public interface AircraftRepository extends CrudRepository<Aircraft,String> {
-    public Aircraft findByID(String ID);
+
 }

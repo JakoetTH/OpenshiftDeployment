@@ -24,17 +24,18 @@ public class testPilotCrudRepository extends AbstractTestNGSpringContextTests
     public void testCreate() throws Exception
     {
 
-        Pilot pilot = new Pilot.Builder("junior pilot")
+        Pilot pilot = new Pilot.Builder("12345")
                 .firstName("Thawhir")
                 .lastName("Jakoet")
                 .address("15 Shiraaz Close")
                 .contact("021 123 4567")
+                .rank("junior pilot")
                 .build();
         repository.save(pilot);
         id = pilot.getID();
         Assert.assertNotNull(pilot);
     }
-/*
+
     @Test(dependsOnMethods = "testCreate")
     public void testRead() throws Exception
     {
@@ -67,5 +68,4 @@ public class testPilotCrudRepository extends AbstractTestNGSpringContextTests
         Pilot newPilot = repository.findOne(id);
         Assert.assertNull(newPilot);
     }
-*/
 }

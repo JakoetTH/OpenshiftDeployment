@@ -12,14 +12,14 @@ import java.util.List;
 @Entity
 public class Flight implements FlightDisplay, Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private String ID;
     private Date departureTime;
     private Date arrivalTime;
     private String departureLocation;
     private String arrivalLocation;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name="ticket_id")
+    @JoinColumn(name="ID")
     private List<Ticket> tickets;
 
     private Flight()

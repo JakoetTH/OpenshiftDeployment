@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Entity
 public class Runway implements AirportVenueDetails, Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private String ID;
     private String status;
     private int length;

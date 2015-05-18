@@ -22,7 +22,7 @@ public class testRunwayCrudRepository extends AbstractTestNGSpringContextTests{
     {
         Runway runway = new Runway.Builder("12345")
                 .status("available")
-                .length(2000)
+                .length(1)
                 .build();
         repository.save(runway);
         id = runway.getID();
@@ -42,7 +42,7 @@ public class testRunwayCrudRepository extends AbstractTestNGSpringContextTests{
         Runway runway = repository.findOne(id);
         Runway newRunway = new Runway.Builder(runway.getID())
                 .status("in use")
-                .length(2000)
+                .length(1)
                 .build();
         repository.save(newRunway);
 

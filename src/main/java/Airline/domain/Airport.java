@@ -10,17 +10,17 @@ import java.util.List;
 @Entity
 public class Airport implements AirportDetails, Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private String ID;
     private String name;
     private String country;
     private String city;
     private String type;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name="airport_id")
+    @JoinColumn(name="ID")
     private List<Hangar> hangars;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name="airport_id")
+    @JoinColumn(name="ID")
     private List<Runway> runways;
 
     private Airport()
