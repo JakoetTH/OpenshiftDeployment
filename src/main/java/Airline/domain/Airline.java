@@ -15,7 +15,7 @@ public class Airline implements AirlineDetails, Serializable{
     private String name;
     private String nationality;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name="ID")
+    @JoinColumn(name="airline_id")
     private List<Aircraft> aircrafts;
 
     private Airline()

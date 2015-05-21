@@ -19,7 +19,7 @@ public class Flight implements FlightDisplay, Serializable{
     private String departureLocation;
     private String arrivalLocation;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name="ID")
+    @JoinColumn(name="flight_id")
     private List<Ticket> tickets;
 
     private Flight()

@@ -17,7 +17,7 @@ public class Clerk implements PersonDetails, Serializable{
     private String contact;
     private String position;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name="ID")
+    @JoinColumn(name="clerk_id")
     private List<Ticket> tickets;
 
 

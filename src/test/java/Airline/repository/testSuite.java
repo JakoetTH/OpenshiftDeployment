@@ -15,5 +15,5 @@ import org.junit.runners.Suite;
         testRunwayCrudRepository.class,
         testTicketCrudRepository.class
 })
-public class testSuite {
+public class testSuite{
 }

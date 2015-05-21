@@ -17,10 +17,10 @@ public class Airport implements AirportDetails, Serializable {
     private String city;
     private String type;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name="ID")
+    @JoinColumn(name="airport_id")
     private List<Hangar> hangars;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name="ID")
+    @JoinColumn(name="airport_id")
     private List<Runway> runways;
 
     private Airport()
