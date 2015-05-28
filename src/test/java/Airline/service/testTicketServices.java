@@ -3,12 +3,12 @@ package Airline.service;
 import Airline.App;
 import Airline.domain.Ticket;
 import Airline.repository.TicketRepository;
-import org.junit.Assert;
-import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class testTicketServices extends AbstractTestNGSpringContextTests{
 
     private String id;
     private List<Ticket> tickets;
-    @Before
+    @BeforeMethod
     public void setUp()
     {
         tickets = new ArrayList<Ticket>();
@@ -43,11 +43,11 @@ public class testTicketServices extends AbstractTestNGSpringContextTests{
                 .ticketClass("First Class")
                 .build();
 
-        //tickets.add(ticket);
+        tickets.add(ticket);
         repository.save(ticket);
         Assert.assertNotNull(ticket);
 
-        //tickets.add(tickettwo);
+        tickets.add(tickettwo);
         repository.save(tickettwo);
         Assert.assertNotNull(tickettwo);
 
@@ -59,6 +59,6 @@ public class testTicketServices extends AbstractTestNGSpringContextTests{
     public void testGetPassengerTickets()
     {
         List<Ticket> tickets = service.getPassengerTickets(id);
-        Assert.assertNotNull(tickets);
+        Assert.assertTrue(tickets.size() == 1);
     }
 }

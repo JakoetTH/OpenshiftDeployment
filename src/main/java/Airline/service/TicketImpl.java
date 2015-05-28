@@ -19,9 +19,10 @@ public class TicketImpl implements TicketService {
     {
         Iterable<Ticket> ittickets = repository.findAll();
         List<Ticket> tickets = new ArrayList<Ticket>();
-        for (Ticket ticket : tickets)
+        for (Ticket ticket : ittickets)
         {
-            tickets.add(ticket);
+            if(ticket.getID().equals(ID))
+                tickets.add(ticket);
         }
         return tickets;
     }
