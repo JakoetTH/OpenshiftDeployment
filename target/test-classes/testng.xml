@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestSuite">
+    <test name="AircraftCrud">
+        <classes>
+            <class name="Airline.repository.testAircraftCrudRepository" />
+        </classes>
+    </test>
+    <test name="AirlineCrud">
+        <classes>
+            <class name="Airline.repository.testAirlineCrudRepository" />
+        </classes>
+    </test>
+    <test name="AirportCrud">
+        <classes>
+            <class name="Airline.repository.testAirportCrudRepository" />
+        </classes>
+    </test>
+    <test name="ClerkCrud">
+        <classes>
+            <class name="Airline.repository.testClerkCrudRepository" />
+        </classes>
+    </test>
+    <test name="FlightCrud">
+        <classes>
+            <class name="Airline.repository.testFlightCrudRepository" />
+        </classes>
+    </test>
+    <test name="HangarCrud">
+        <classes>
+            <class name="Airline.repository.testHangarCrudRepository" />
+        </classes>
+    </test>
+    <test name="PassengerCrud">
+        <classes>
+            <class name="Airline.repository.testPassengerCrudRepository" />
+        </classes>
+    </test>
+    <test name="PilotCrud">
+        <classes>
+            <class name="Airline.repository.testPilotCrudRepository" />
+        </classes>
+    </test>
+    <test name="RunwayCrud">
+        <classes>
+            <class name="Airline.repository.testRunwayCrudRepository" />
+        </classes>
+    </test>
+    <test name="TicketCrud">
+        <classes>
+            <class name="Airline.repository.testTicketCrudRepository" />
+        </classes>
+    </test>
+    <test name="TicketServices">
+        <classes>
+            <class name="Airline.service.testTicketServices" />
+        </classes>
+    </test>
+
+
+</suite>
