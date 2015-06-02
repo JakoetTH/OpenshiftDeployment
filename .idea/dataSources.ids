@@ -99,9 +99,9 @@
       <column name="flight_id" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
       <column name="clerk_id" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
       <column name="passenger_id" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
-      <foreign-key name="ticket_ibfk_3" columns="passenger_id" ref-table="passenger" ref-schema="" ref-catalog="Crystal" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="ticket_ibfk_1" columns="flight_id" ref-table="flight" ref-schema="" ref-catalog="Crystal" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="ticket_ibfk_2" columns="clerk_id" ref-table="clerk" ref-schema="" ref-catalog="Crystal" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="ticket_ibfk_3" columns="passenger_id" ref-table="passenger" ref-schema="" ref-catalog="Crystal" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
   </data-source>
 </component>
