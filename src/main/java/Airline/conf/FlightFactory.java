@@ -8,18 +8,16 @@ import java.util.List;
 
 public class FlightFactory {
 
-    public static Flight createFlight(String ID,
-                                    Date departureTime,
+    public static Flight createFlight(Date departureTime,
                                     Date arrivalTime,
                                     String departureLocation,
                                     String arrivalLocation,
                                     List<Ticket> tickets)
     {
         Flight flight = new Flight
-                .Builder(ID)
+                .Builder(departureLocation)
                 .departureTime(departureTime)
                 .arrivalTime(arrivalTime)
-                .departureLocation(departureLocation)
                 .arrivalLocation(arrivalLocation)
                 .tickets(tickets)
                 .build();

@@ -4,7 +4,7 @@ package Airline.domain;
  * Created by student on 2015/04/26.
  */
 public interface TicketDetails {
-    public String getID();
+    public Long getID();
     public float getPrice();
     public String getTicketClass();
 }

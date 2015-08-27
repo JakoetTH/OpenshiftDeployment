@@ -1,6 +1,6 @@
 package Airline.service;
 
-import Airline.App;
+/* Airline.App;
 import Airline.domain.Ticket;
 import Airline.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,4 +59,4 @@ public class testTicketServices extends AbstractTestNGSpringContextTests{
         List<Ticket> tickets = service.getPassengerTickets(id);
         Assert.assertTrue(tickets.size() == 1);
     }
-}
+}*/

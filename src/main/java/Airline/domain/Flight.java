@@ -12,8 +12,8 @@ import java.util.List;
 @Entity
 public class Flight implements FlightDisplay, Serializable{
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
-    private String ID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ID;
     private Date departureTime;
     private Date arrivalTime;
     private String departureLocation;
@@ -37,7 +37,7 @@ public class Flight implements FlightDisplay, Serializable{
         this.tickets=builder.tickets;
     }
     @Override
-    public String getID()
+    public Long getID()
     {
         return this.ID;
     }
@@ -79,16 +79,16 @@ public class Flight implements FlightDisplay, Serializable{
 
     public static class Builder
     {
-        private String ID;
+        private Long ID;
         private Date departureTime;
         private Date arrivalTime;
         private String departureLocation;
         private String arrivalLocation;
         private List<Ticket> tickets;
 
-        public Builder(String ID)
+        public Builder(String departureLocation)
         {
-            this.ID=ID;
+            this.departureLocation=departureLocation;
         }
 
         public Builder departureTime(Date departureTime)
@@ -103,9 +103,9 @@ public class Flight implements FlightDisplay, Serializable{
             return this;
         }
 
-        public Builder departureLocation(String departureLocation)
+        public Builder ID(Long ID)
         {
-            this.departureLocation=departureLocation;
+            this.ID=ID;
             return this;
         }
 

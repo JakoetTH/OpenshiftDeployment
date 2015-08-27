@@ -4,14 +4,12 @@ import Airline.domain.Ticket;
 
 public class TicketFactory {
 
-    public static Ticket createTicket(String ID,
-                                    float price,
+    public static Ticket createTicket(float price,
                                     String ticketClass)
     {
         Ticket ticket = new Ticket
-                .Builder(ID)
+                .Builder(ticketClass)
                 .price(price)
-                .ticketClass(ticketClass)
                 .build();
         return ticket;
     }

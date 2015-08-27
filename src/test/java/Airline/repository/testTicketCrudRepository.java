@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
 public class testTicketCrudRepository extends AbstractTestNGSpringContextTests{
-    private String id;
+    private Long id;
 
     @Autowired
     TicketRepository repository;
@@ -20,9 +20,8 @@ public class testTicketCrudRepository extends AbstractTestNGSpringContextTests{
     @Test
     public void testCreate() throws Exception
     {
-        Ticket ticket = new Ticket.Builder("12345")
+        Ticket ticket = new Ticket.Builder("First Class")
                 .price(200)
-                .ticketClass("First Class")
                 .build();
         repository.save(ticket);
         id = ticket.getID();
@@ -33,16 +32,16 @@ public class testTicketCrudRepository extends AbstractTestNGSpringContextTests{
     public void testRead() throws Exception
     {
         Ticket ticket = repository.findOne(id);
-        Assert.assertEquals("12345",ticket.getID());
+        Assert.assertEquals("First Class",ticket.getTicketClass());
     }
 
     @Test(dependsOnMethods = "testRead")
     public void testUpdate() throws Exception
     {
         Ticket ticket = repository.findOne(id);
-        Ticket newTicket = new Ticket.Builder(ticket.getID())
-                .price(300)
-                .ticketClass("Business Class")
+        Ticket newTicket = new Ticket.Builder("Business Class")
+                .ID(id)
+                .price(200)
                 .build();
         repository.save(newTicket);
 

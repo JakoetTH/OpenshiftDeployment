@@ -8,8 +8,8 @@ import java.io.Serializable;
 @Entity
 public class Ticket implements TicketDetails, Serializable{
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
-    private String ID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ID;
     private float price;
     private String ticketClass;
 
@@ -24,7 +24,7 @@ public class Ticket implements TicketDetails, Serializable{
         this.ticketClass=builder.ticketClass;
     }
     @Override
-    public String getID()
+    public Long getID()
     {
         return this.ID;
     }
@@ -41,14 +41,14 @@ public class Ticket implements TicketDetails, Serializable{
 
     public static class Builder
     {
-        private String ID;
+        private Long ID;
         private float price;
         private String ticketClass;
 
-        public Builder(String ID)
-        {
-            this.ID=ID;
+        public Builder(String ticketClass) {
+            this.ticketClass = ticketClass;
         }
+
 
         public Builder price(float price)
         {
@@ -56,9 +56,9 @@ public class Ticket implements TicketDetails, Serializable{
             return this;
         }
 
-        public Builder ticketClass(String ticketClass)
+        public Builder ID(Long ID)
         {
-            this.ticketClass=ticketClass;
+            this.ID=ID;
             return this;
         }
 

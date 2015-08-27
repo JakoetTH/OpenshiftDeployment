@@ -7,7 +7,7 @@ import java.util.List;
  * Created by student on 2015/04/26.
  */
 public interface FlightDisplay {
-    public String getID();
+    public Long getID();
     public Date getDepartureTime();
     public Date getArrivalTime();
     public String getDepartureLocation();

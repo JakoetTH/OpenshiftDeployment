@@ -12,23 +12,23 @@ public class testTicket {
     @Before
     public void setUp()
     {
-        ticket = TicketFactory.createTicket("12345",123,"Business");
+        ticket = TicketFactory.createTicket(123,"Business");
     }
     @Test
     public void testCreateTicket() throws Exception
     {
-        Assert.assertEquals("12345",ticket.getID());
+        Assert.assertEquals("Business",ticket.getTicketClass());
     }
     @Test
     public void testUpdateTicket()
     {
         newTicket = new Ticket
-                .Builder(ticket.getID())
+                .Builder(ticket.getTicketClass())
                 .copy(ticket)
-                .ticketClass("standard").build();
+                .price(122).build();
 
-        Assert.assertEquals("12345",newTicket.getID());
-        Assert.assertEquals("standard",newTicket.getTicketClass());
+        Assert.assertEquals("Business",newTicket.getTicketClass());
+        Assert.assertEquals(122,newTicket.getPrice());
     }
     @After
     public void tearDown()

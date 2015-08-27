@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
 public class testFlightCrudRepository extends AbstractTestNGSpringContextTests{
-    private String id;
+    private Long id;
     private Date date = new Date();
     private List<Ticket> tickets;
     @Autowired
@@ -25,10 +25,9 @@ public class testFlightCrudRepository extends AbstractTestNGSpringContextTests{
     @Test
     public void testCreate() throws Exception
     {
-        Flight flight = new Flight.Builder("12345")
+        Flight flight = new Flight.Builder("Johannesburg")
                 .departureTime(date)
                 .arrivalTime(date)
-                .departureLocation("Johannesburg")
                 .arrivalLocation("Cape Town")
                 .tickets(tickets)
                 .build();
@@ -41,17 +40,17 @@ public class testFlightCrudRepository extends AbstractTestNGSpringContextTests{
     public void testRead() throws Exception
     {
         Flight flight = repository.findOne(id);
-        Assert.assertEquals("12345",flight.getID());
+        Assert.assertEquals("Johannesburg",flight.getDepartureLocation());
     }
 
     @Test(dependsOnMethods = "testRead")
     public void testUpdate() throws Exception
     {
         Flight flight = repository.findOne(id);
-        Flight newFlight = new Flight.Builder(flight.getID())
+        Flight newFlight = new Flight.Builder(flight.getDepartureLocation())
+                .ID(id)
                 .departureTime(date)
                 .arrivalTime(date)
-                .departureLocation("Johannesburg")
                 .arrivalLocation("London")
                 .tickets(tickets)
                 .build();

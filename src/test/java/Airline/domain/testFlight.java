@@ -16,23 +16,23 @@ public class testFlight {
     @Before
     public void setUp()
     {
-        flight = FlightFactory.createFlight("12345",date,date,"Johannesburg","Belgium",tickets);
+        flight = FlightFactory.createFlight(date,date,"Johannesburg","Belgium",tickets);
     }
     @Test
     public void testCreateFlight() throws Exception
     {
-        Assert.assertEquals("12345",flight.getID());
+        Assert.assertEquals("Johannesburg",flight.getDepartureLocation());
     }
     @Test
     public void testUpdateFlight()
     {
         newFlight = new Flight
-                .Builder(flight.getID())
+                .Builder(flight.getDepartureLocation())
                 .copy(flight)
-                .departureLocation("London").build();
+                .arrivalLocation("London").build();
 
-        Assert.assertEquals("12345",newFlight.getID());
-        Assert.assertEquals("London",newFlight.getDepartureLocation());
+        Assert.assertEquals("Johannesburg",newFlight.getDepartureLocation());
+        Assert.assertEquals("London",newFlight.getArrivalLocation());
     }
     @After
     public void tearDown()

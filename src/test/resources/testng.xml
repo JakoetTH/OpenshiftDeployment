@@ -52,11 +52,6 @@
             <class name="Airline.repository.testTicketCrudRepository" />
         </classes>
     </test>
-    <test name="TicketServices">
-        <classes>
-            <class name="Airline.service.testTicketServices" />
-        </classes>
-    </test>
 
 
 </suite>
