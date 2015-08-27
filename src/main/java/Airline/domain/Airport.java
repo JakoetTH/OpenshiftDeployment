@@ -10,8 +10,8 @@ import java.util.List;
 @Entity
 public class Airport implements AirportDetails, Serializable {
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
-    private String ID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ID;
     private String name;
     private String country;
     private String city;
@@ -39,7 +39,7 @@ public class Airport implements AirportDetails, Serializable {
         this.runways=builder.runways;
     }
     @Override
-    public String getID()
+    public Long getID()
     {
         return this.ID;
     }
@@ -76,7 +76,7 @@ public class Airport implements AirportDetails, Serializable {
 
     public static class Builder
     {
-        private String ID;
+        private Long ID;
         private String name;
         private String country;
         private String city;
@@ -84,14 +84,14 @@ public class Airport implements AirportDetails, Serializable {
         private List<Hangar> hangars;
         private List<Runway> runways;
 
-        public Builder(String ID)
-        {
-            this.ID=ID;
-        }
-
-        public Builder name(String name)
+        public Builder(String name)
         {
             this.name=name;
+        }
+
+        public Builder ID(Long ID)
+        {
+            this.ID=ID;
             return this;
         }
 

@@ -8,8 +8,7 @@ import java.util.List;
 
 public class AirportFactory {
 
-    public static Airport createAirport(String ID,
-                                            String name,
+    public static Airport createAirport(String name,
                                             String country,
                                             String city,
                                             String type,
@@ -17,8 +16,7 @@ public class AirportFactory {
                                             List<Runway> runways)
     {
         Airport airport = new Airport
-                .Builder(ID)
-                .name(name)
+                .Builder(name)
                 .country(country)
                 .city(city)
                 .type(type)

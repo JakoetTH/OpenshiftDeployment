@@ -17,22 +17,22 @@ public class testAirport {
     @Before
     public void setUp()
     {
-        airport = AirportFactory.createAirport("12345","South African National Airport","South Africa","Cape Town","public",hangars,runways);
+        airport = AirportFactory.createAirport("South African National Airport","South Africa","Cape Town","public",hangars,runways);
     }
     @Test
     public void testCreateAirport() throws Exception
     {
-        Assert.assertEquals("12345",airport.getID());
+        Assert.assertEquals("South African National Airport",airport.getName());
     }
     @Test
     public void testUpdateAirport()
     {
         newAirport = new Airport
-                .Builder(airport.getID())
+                .Builder(airport.getName())
                 .copy(airport)
                 .type("semi-private").build();
 
-        Assert.assertEquals("12345",newAirport.getID());
+        Assert.assertEquals("South African National Airport",newAirport.getName());
         Assert.assertEquals("semi-private",newAirport.getType());
     }
     @After

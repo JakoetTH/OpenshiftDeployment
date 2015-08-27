@@ -12,23 +12,23 @@ public class testRunway {
     @Before
     public void setUp()
     {
-        runway = RunwayFactory.createRunway("12345","No current flights",5000);
+        runway = RunwayFactory.createRunway("No current flights",5000);
     }
     @Test
     public void testCreateRunway() throws Exception
     {
-        Assert.assertEquals("12345",runway.getID());
+        Assert.assertEquals("No current flights",runway.getStatus());
     }
     @Test
     public void testUpdateRunway()
     {
         newRunway = new Runway
-                .Builder(runway.getID())
+                .Builder(runway.getStatus())
                 .copy(runway)
-                .status("Flight currently scheduled").build();
+                .length(4000).build();
 
-        Assert.assertEquals("12345",newRunway.getID());
-        Assert.assertEquals("Flight currently scheduled",newRunway.getStatus());
+        Assert.assertEquals("No current flights",newRunway.getStatus());
+        Assert.assertEquals(4000,newRunway.getSize());
     }
     @After
     public void tearDown()

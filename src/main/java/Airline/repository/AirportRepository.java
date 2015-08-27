@@ -3,5 +3,5 @@ package Airline.repository;
 import Airline.domain.Airport;
 import org.springframework.data.repository.CrudRepository;
 
-public interface AirportRepository extends CrudRepository<Airport,String> {
+public interface AirportRepository extends CrudRepository<Airport,Long> {
 }

@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
 public class testRunwayCrudRepository extends AbstractTestNGSpringContextTests{
-    private String id;
+    private Long id;
 
     @Autowired
     RunwayRepository repository;
@@ -20,8 +20,7 @@ public class testRunwayCrudRepository extends AbstractTestNGSpringContextTests{
     @Test
     public void testCreate() throws Exception
     {
-        Runway runway = new Runway.Builder("12345")
-                .status("available")
+        Runway runway = new Runway.Builder("available")
                 .length(1)
                 .build();
         repository.save(runway);
@@ -33,21 +32,21 @@ public class testRunwayCrudRepository extends AbstractTestNGSpringContextTests{
     public void testRead() throws Exception
     {
         Runway runway = repository.findOne(id);
-        Assert.assertEquals("12345",runway.getID());
+        Assert.assertEquals("available",runway.getStatus());
     }
 
     @Test(dependsOnMethods = "testRead")
     public void testUpdate() throws Exception
     {
         Runway runway = repository.findOne(id);
-        Runway newRunway = new Runway.Builder(runway.getID())
-                .status("in use")
-                .length(1)
+        Runway newRunway = new Runway.Builder(runway.getStatus())
+                .ID(id)
+                .length(2)
                 .build();
         repository.save(newRunway);
 
         Runway updatedRunway = repository.findOne(id);
-        Assert.assertEquals("in use",updatedRunway.getStatus());
+        Assert.assertEquals(2,updatedRunway.getSize());
     }
 
     @Test(dependsOnMethods = "testUpdate")

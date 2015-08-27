@@ -6,7 +6,7 @@ import java.util.List;
  * Created by student on 2015/04/26.
  */
 public interface AirportDetails {
-    public String getID();
+    public Long getID();
     public String getName();
     public String getCountry();
     public String getCity();

@@ -12,23 +12,23 @@ public class testHangar {
     @Before
     public void setUp()
     {
-        hangar = HangarFactory.createHangar("12345","Space Available",500);
+        hangar = HangarFactory.createHangar("Space Available",500);
     }
     @Test
     public void testCreateHangar() throws Exception
     {
-        Assert.assertEquals("12345",hangar.getID());
+        Assert.assertEquals("Space Available",hangar.getStatus());
     }
     @Test
     public void testUpdateHangar()
     {
         newHangar = new Hangar
-                .Builder(hangar.getID())
+                .Builder(hangar.getStatus())
                 .copy(hangar)
-                .status("Full").build();
+                .capacity(400).build();
 
-        Assert.assertEquals("12345",newHangar.getID());
-        Assert.assertEquals("Full",newHangar.getStatus());
+        Assert.assertEquals("Space Available",newHangar.getStatus());
+        Assert.assertEquals(400,newHangar.getSize());
     }
     @After
     public void tearDown()

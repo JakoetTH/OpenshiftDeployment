@@ -8,8 +8,8 @@ import java.io.Serializable;
 @Entity
 public class Runway implements AirportVenueDetails, Serializable {
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
-    private String ID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ID;
     private String status;
     private int length;
 
@@ -26,7 +26,7 @@ public class Runway implements AirportVenueDetails, Serializable {
 
     }
     @Override
-    public String getID()
+    public Long getID()
     {
         return this.ID;
     }
@@ -43,18 +43,19 @@ public class Runway implements AirportVenueDetails, Serializable {
 
     public static class Builder
     {
-        private String ID;
+        private Long ID;
         private String status;
         private int length;
 
-        public Builder(String ID)
-        {
-            this.ID=ID;
-        }
-
-        public Builder status(String status)
+        public Builder(String status)
         {
             this.status=status;
+
+        }
+
+        public Builder ID(Long ID)
+        {
+            this.ID=ID;
             return this;
         }
 

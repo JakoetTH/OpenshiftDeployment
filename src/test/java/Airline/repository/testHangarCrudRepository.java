@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
 public class testHangarCrudRepository extends AbstractTestNGSpringContextTests{
-    private String id;
+    private Long id;
 
     @Autowired
     HangarRepository repository;
@@ -20,8 +20,7 @@ public class testHangarCrudRepository extends AbstractTestNGSpringContextTests{
     @Test
     public void testCreate() throws Exception
     {
-        Hangar hangar = new Hangar.Builder("12345")
-                .status("Empty")
+        Hangar hangar = new Hangar.Builder("Empty")
                 .capacity(2000)
                 .build();
         repository.save(hangar);
@@ -33,21 +32,21 @@ public class testHangarCrudRepository extends AbstractTestNGSpringContextTests{
     public void testRead() throws Exception
     {
         Hangar hangar = repository.findOne(id);
-        Assert.assertEquals("12345", hangar.getID());
+        Assert.assertEquals("Empty", hangar.getStatus());
     }
 
     @Test(dependsOnMethods = "testRead")
     public void testUpdate() throws Exception
     {
         Hangar hangar = repository.findOne(id);
-        Hangar newHangar = new Hangar.Builder(hangar.getID())
-                .status("Full")
-                .capacity(2000)
+        Hangar newHangar = new Hangar.Builder(hangar.getStatus())
+                .ID(id)
+                .capacity(1000)
                 .build();
         repository.save(newHangar);
 
         Hangar updatedHangar = repository.findOne(id);
-        Assert.assertEquals("Full",updatedHangar.getStatus());
+        Assert.assertEquals(1000,updatedHangar.getSize());
     }
 
     @Test(dependsOnMethods = "testUpdate")
