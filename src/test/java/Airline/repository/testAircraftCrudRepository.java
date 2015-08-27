@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
 public class testAircraftCrudRepository extends AbstractTestNGSpringContextTests{
-    private String id;
+    private Long id;
 
     @Autowired
     AircraftRepository repository;
@@ -20,8 +20,7 @@ public class testAircraftCrudRepository extends AbstractTestNGSpringContextTests
     @Test
     public void testCreate()  throws Exception
     {
-        Aircraft aircraft = new Aircraft.Builder("12345")
-                .aircraftType("Boeing-474")
+        Aircraft aircraft = new Aircraft.Builder("Boeing-474")
                 .seats(200)
                 .fuelCapacity(5000)
                 .build();
@@ -34,15 +33,15 @@ public class testAircraftCrudRepository extends AbstractTestNGSpringContextTests
     public void testRead()  throws Exception
     {
         Aircraft aircraft = repository.findOne(id);
-        Assert.assertEquals("12345",aircraft.getID());
+        Assert.assertEquals("Boeing-474",aircraft.getAircraftType());
     }
 
     @Test(dependsOnMethods = "testRead")
     public void testUpdate()  throws Exception
     {
         Aircraft aircraft = repository.findOne(id);
-        Aircraft newAircraft = new Aircraft.Builder(aircraft.getID())
-                .aircraftType("Boeing-474")
+        Aircraft newAircraft = new Aircraft.Builder(aircraft.getAircraftType())
+                .ID(id)
                 .seats(300)
                 .fuelCapacity(5000)
                 .build();

@@ -26,5 +26,8 @@
         <module name="Airline" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Airline" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>

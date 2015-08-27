@@ -8,8 +8,8 @@ import java.io.Serializable;
 @Entity
 public class Aircraft implements AircraftDetails, Serializable{
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
-    private String ID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ID;
     private String aircraftType;
     private int seats;
     private int fuelCapacity;
@@ -27,7 +27,7 @@ public class Aircraft implements AircraftDetails, Serializable{
         this.fuelCapacity=builder.fuelCapacity;
     }
     @Override
-    public String getID()
+    public Long getID()
     {
         return this.ID;
     }
@@ -49,19 +49,19 @@ public class Aircraft implements AircraftDetails, Serializable{
 
     public static class Builder
     {
-        private String ID;
+        private Long ID;
         private String aircraftType;
         private int seats;
         private int fuelCapacity;
 
-        public Builder(String ID)
-        {
-            this.ID=ID;
-        }
-
-        public Builder aircraftType(String aircraftType)
+        public Builder(String aircraftType)
         {
             this.aircraftType=aircraftType;
+        }
+
+        public Builder ID(Long ID)
+        {
+            this.ID=ID;
             return this;
         }
 

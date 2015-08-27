@@ -12,22 +12,22 @@ public class testAircraft {
     @Before
     public void setUp()
     {
-        aircraft = AircraftFactory.createAircraft("12345","Boeing-474",200,5000);
+        aircraft = AircraftFactory.createAircraft("Boeing-474",200,5000);
     }
     @Test
     public void testCreateAircraft() throws Exception
     {
-        Assert.assertEquals("12345",aircraft.getID());
+        Assert.assertEquals("Boeing-474",aircraft.getAircraftType());
     }
     @Test
     public void testUpdateAircraft()
     {
         newAircraft = new Aircraft
-                .Builder(aircraft.getID())
+                .Builder(aircraft.getAircraftType())
                 .copy(aircraft)
                 .seats(300).build();
 
-        Assert.assertEquals("12345",newAircraft.getID());
+        Assert.assertEquals("Boeing-474",newAircraft.getAircraftType());
         Assert.assertEquals(300,newAircraft.getSeats());
     }
     @After

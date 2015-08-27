@@ -51,10 +51,8 @@ public class testTicketServices extends AbstractTestNGSpringContextTests{
         repository.save(tickettwo);
         Assert.assertNotNull(tickettwo);
 
-
-
-
     }
+
     @Test(dependsOnMethods = "testCreateTickets")
     public void testGetPassengerTickets()
     {
