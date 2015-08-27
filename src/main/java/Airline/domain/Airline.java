@@ -10,8 +10,8 @@ import java.util.List;
 @Entity
 public class Airline implements AirlineDetails, Serializable{
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
-    private String ID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ID;
     private String name;
     private String nationality;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
@@ -31,7 +31,7 @@ public class Airline implements AirlineDetails, Serializable{
         this.aircrafts = builder.aircrafts;
     }
     @Override
-    public String getID()
+    public Long getID()
     {
         return this.ID;
     }
@@ -53,19 +53,19 @@ public class Airline implements AirlineDetails, Serializable{
 
     public static class Builder
     {
-        private String ID;
+        private Long ID;
         private String name;
         private String nationality;
         private List<Aircraft> aircrafts;
 
-        public Builder(String ID)
-        {
-            this.ID=ID;
-        }
-
-        public Builder name(String name)
+        public Builder(String name)
         {
             this.name=name;
+        }
+
+        public Builder ID(Long ID)
+        {
+            this.ID=ID;
             return this;
         }
 

@@ -16,22 +16,22 @@ public class testAirline {
     @Before
     public void setUp()
     {
-        airline = AirlineFactory.createAirline("12345","Mango","South African",aircrafts);
+        airline = AirlineFactory.createAirline("Mango","South African",aircrafts);
     }
     @Test
     public void testCreateAirline() throws Exception
     {
-        Assert.assertEquals("12345",airline.getID());
+        Assert.assertEquals("Mango",airline.getAirlineName());
     }
     @Test
     public void testUpdateAirline()
     {
         newAirline = new Airline
-                .Builder(airline.getID())
+                .Builder(airline.getAirlineName())
                 .copy(airline)
                 .nationality("Saudi Arabian").build();
 
-        Assert.assertEquals("12345",newAirline.getID());
+        Assert.assertEquals("Mango",newAirline.getAirlineName());
         Assert.assertEquals("Saudi Arabian",newAirline.getNationality());
     }
     @After

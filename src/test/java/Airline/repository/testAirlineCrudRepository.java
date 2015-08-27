@@ -15,7 +15,7 @@ import java.util.List;
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
 public class testAirlineCrudRepository extends AbstractTestNGSpringContextTests{
-    private String id;
+    private Long id;
     private List<Aircraft> aircrafts;
 
     @Autowired
@@ -24,8 +24,7 @@ public class testAirlineCrudRepository extends AbstractTestNGSpringContextTests{
     @Test
     public void testCreate() throws Exception
     {
-        Airline airline = new Airline.Builder("12345")
-                .name("Mango")
+        Airline airline = new Airline.Builder("Mango")
                 .nationality("South Africa")
                 .aircraft(aircrafts)
                 .build();
@@ -38,22 +37,22 @@ public class testAirlineCrudRepository extends AbstractTestNGSpringContextTests{
     public void testRead() throws Exception
     {
         Airline airline = repository.findOne(id);
-        Assert.assertEquals("12345",airline.getID());
+        Assert.assertEquals("Mango",airline.getAirlineName());
     }
 
     @Test(dependsOnMethods = "testRead")
     public void testUpdate() throws Exception
     {
         Airline airline = repository.findOne(id);
-        Airline newAirline = new Airline.Builder(airline.getID())
-                .name("Mango Advanced")
-                .nationality("South Africa")
+        Airline newAirline = new Airline.Builder(airline.getAirlineName())
+                .ID(id)
+                .nationality("Namibia")
                 .aircraft(aircrafts)
                 .build();
         repository.save(newAirline);
 
         Airline updatedAirline = repository.findOne(id);
-        Assert.assertEquals("Mango Advanced",updatedAirline.getAirlineName());
+        Assert.assertEquals("Namibia",updatedAirline.getNationality());
     }
 
     @Test(dependsOnMethods = "testUpdate")
