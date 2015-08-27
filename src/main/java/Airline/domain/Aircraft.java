@@ -2,6 +2,8 @@ package Airline.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 /**
  * Created by student on 2015/04/24.
  */
@@ -13,6 +15,9 @@ public class Aircraft implements AircraftDetails, Serializable{
     private String aircraftType;
     private int seats;
     private int fuelCapacity;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "aircraft_id")
+    private List<Flight> flights;
 
     private Aircraft()
     {
@@ -25,6 +30,7 @@ public class Aircraft implements AircraftDetails, Serializable{
         this.aircraftType=builder.aircraftType;
         this.seats=builder.seats;
         this.fuelCapacity=builder.fuelCapacity;
+        this.flights=builder.flights;
     }
     @Override
     public Long getID()
@@ -46,6 +52,11 @@ public class Aircraft implements AircraftDetails, Serializable{
     {
         return this.fuelCapacity;
     }
+    @Override
+    public List<Flight> getFlights()
+    {
+        return this.flights;
+    }
 
     public static class Builder
     {
@@ -53,6 +64,7 @@ public class Aircraft implements AircraftDetails, Serializable{
         private String aircraftType;
         private int seats;
         private int fuelCapacity;
+        private List<Flight> flights;
 
         public Builder(String aircraftType)
         {
@@ -77,12 +89,19 @@ public class Aircraft implements AircraftDetails, Serializable{
             return this;
         }
 
+        public Builder flights(List<Flight> flights)
+        {
+            this.flights=flights;
+            return this;
+        }
+
         public Builder copy(Aircraft aircraft)
         {
             this.ID=aircraft.getID();
             this.aircraftType=aircraft.getAircraftType();
             this.seats=aircraft.getSeats();
             this.fuelCapacity=aircraft.getFuelCapacity();
+            this.flights=aircraft.getFlights();
             return this;
         }
 

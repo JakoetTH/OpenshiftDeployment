@@ -6,13 +6,16 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.After;
 
+import java.util.List;
+
 public class testAircraft {
     private Aircraft aircraft;
     private Aircraft newAircraft;
+    private List<Flight> flights;
     @Before
     public void setUp()
     {
-        aircraft = AircraftFactory.createAircraft("Boeing-474",200,5000);
+        aircraft = AircraftFactory.createAircraft("Boeing-474",200,5000,flights);
     }
     @Test
     public void testCreateAircraft() throws Exception

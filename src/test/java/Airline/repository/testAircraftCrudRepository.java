@@ -2,6 +2,8 @@ package Airline.repository;
 
 import Airline.App;
 import Airline.domain.Aircraft;
+import Airline.domain.Flight;
+
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -9,10 +11,13 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
 public class testAircraftCrudRepository extends AbstractTestNGSpringContextTests{
     private Long id;
+    private List<Flight> flights;
 
     @Autowired
     AircraftRepository repository;
@@ -23,6 +28,7 @@ public class testAircraftCrudRepository extends AbstractTestNGSpringContextTests
         Aircraft aircraft = new Aircraft.Builder("Boeing-474")
                 .seats(200)
                 .fuelCapacity(5000)
+                .flights(flights)
                 .build();
         repository.save(aircraft);
         id = aircraft.getID();
@@ -44,6 +50,7 @@ public class testAircraftCrudRepository extends AbstractTestNGSpringContextTests
                 .ID(id)
                 .seats(300)
                 .fuelCapacity(5000)
+                .flights(flights)
                 .build();
         repository.save(newAircraft);
 
