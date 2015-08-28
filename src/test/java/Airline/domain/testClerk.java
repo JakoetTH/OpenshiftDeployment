@@ -15,22 +15,22 @@ public class testClerk {
     @Before
     public void setUp()
     {
-        clerk = ClerkFactory.createClerk("12345","Thawhir","Jakoet","15 Shiraaz Close","54321","Ticketclerk",tickets);
+        clerk = ClerkFactory.createClerk("Thawhir","Jakoet","15 Shiraaz Close","54321","Ticketclerk",tickets);
     }
     @Test
     public void testCreateClerk() throws Exception
     {
-        Assert.assertEquals("12345",clerk.getID());
+        Assert.assertEquals("Thawhir",clerk.getFirstName());
     }
     @Test
     public void testUpdateClerk()
     {
         newClerk = new Clerk
-                .Builder(clerk.getID())
+                .Builder(clerk.getFirstName())
                 .copy(clerk)
                 .position("Floorclerk").build();
 
-        Assert.assertEquals("12345",newClerk.getID());
+        Assert.assertEquals("Thawhir",newClerk.getFirstName());
         Assert.assertEquals("Floorclerk",newClerk.getPosition());
     }
     @After

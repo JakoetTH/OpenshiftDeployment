@@ -8,7 +8,8 @@ import java.io.Serializable;
 @Entity
 public class Pilot implements PersonDetails, Serializable{
     @Id
-    private String ID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ID;
     private String firstName;
     private String lastName;
     private String address;
@@ -30,7 +31,7 @@ public class Pilot implements PersonDetails, Serializable{
         this.rank=builder.rank;
     }
     @Override
-    public String getID()
+    public Long getID()
     {
         return this.ID;
     }
@@ -58,21 +59,21 @@ public class Pilot implements PersonDetails, Serializable{
 
     public static class Builder
     {
-        private String ID;
+        private Long ID;
         private String firstName;
         private String lastName;
         private String address;
         private String contact;
         private String rank;
 
-        public Builder(String ID)
-        {
-            this.ID=ID;
-        }
-
-        public Builder firstName(String firstName)
+        public Builder(String firstName)
         {
             this.firstName=firstName;
+        }
+
+        public Builder ID(Long ID)
+        {
+            this.ID=ID;
             return this;
         }
 

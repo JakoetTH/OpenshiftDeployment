@@ -10,7 +10,8 @@ import java.util.List;
 @Entity
 public class Clerk implements PersonDetails, Serializable{
     @Id
-    private String ID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ID;
     private String firstName;
     private String lastName;
     private String address;
@@ -37,7 +38,7 @@ public class Clerk implements PersonDetails, Serializable{
         this.tickets=builder.tickets;
     }
     @Override
-    public String getID()
+    public Long getID()
     {
         return this.ID;
     }
@@ -70,7 +71,7 @@ public class Clerk implements PersonDetails, Serializable{
 
     public static class Builder
     {
-        private String ID;
+        private Long ID;
         private String firstName;
         private String lastName;
         private String address;
@@ -78,14 +79,14 @@ public class Clerk implements PersonDetails, Serializable{
         private String position;
         private List<Ticket> tickets;
 
-        public Builder(String ID)
-        {
-            this.ID=ID;
-        }
-
-        public Builder firstName(String firstName)
+        public Builder(String firstName)
         {
             this.firstName=firstName;
+        }
+
+        public Builder ID(Long ID)
+        {
+            this.ID=ID;
             return this;
         }
 

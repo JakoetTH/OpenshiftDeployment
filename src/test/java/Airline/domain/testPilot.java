@@ -12,22 +12,22 @@ public class testPilot {
     @Before
     public void setUp()
     {
-        pilot = PilotFactory.createPilot("12345","Thawhir","Jakoet","15 Shiraaz Close","54321","Junior");
+        pilot = PilotFactory.createPilot("Thawhir","Jakoet","15 Shiraaz Close","54321","Junior");
     }
     @Test
     public void testCreatePilot() throws Exception
     {
-        Assert.assertEquals("12345",pilot.getID());
+        Assert.assertEquals("Thawhir",pilot.getFirstName());
     }
     @Test
     public void testUpdatePilot()
     {
         newPilot = new Pilot
-                .Builder(pilot.getID())
+                .Builder(pilot.getFirstName())
                 .copy(pilot)
                 .rank("Senior").build();
 
-        Assert.assertEquals("12345",newPilot.getID());
+        Assert.assertEquals("Thawhir",newPilot.getFirstName());
         Assert.assertEquals("Senior",newPilot.getRank());
     }
     @After

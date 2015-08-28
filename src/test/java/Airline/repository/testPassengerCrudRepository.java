@@ -15,7 +15,7 @@ import java.util.List;
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
 public class testPassengerCrudRepository extends AbstractTestNGSpringContextTests{
-    private String id;
+    private Long id;
     private List<Ticket> tickets;
 
     @Autowired
@@ -24,7 +24,8 @@ public class testPassengerCrudRepository extends AbstractTestNGSpringContextTest
     @Test
     public void testCreate() throws Exception
     {
-        Passenger passenger = new Passenger.Builder("12345")
+        Passenger passenger = new Passenger.Builder("Redc")
+                .password("12345")
                 .firstName("Thawhir")
                 .lastName("Jakoet")
                 .address("15 Shiraaz Close")
@@ -40,14 +41,16 @@ public class testPassengerCrudRepository extends AbstractTestNGSpringContextTest
     public void testRead() throws Exception
     {
         Passenger passenger = repository.findOne(id);
-        Assert.assertEquals("12345",passenger.getID());
+        Assert.assertEquals("Redc",passenger.getUserName());
     }
 
     @Test(dependsOnMethods = "testRead")
     public void testUpdate() throws Exception
     {
         Passenger passenger = repository.findOne(id);
-        Passenger newPassenger = new Passenger.Builder(passenger.getID())
+        Passenger newPassenger = new Passenger.Builder(passenger.getUserName())
+                .ID(id)
+                .password("12345")
                 .firstName("Thawhir")
                 .lastName("Jakoet")
                 .address("15 Shiraaz Close")

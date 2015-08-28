@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 @WebAppConfiguration
 public class testPilotCrudRepository extends AbstractTestNGSpringContextTests
  {
-    private String id;
+    private Long id;
 
      @Autowired
      private PilotRepository repository;
@@ -24,8 +24,7 @@ public class testPilotCrudRepository extends AbstractTestNGSpringContextTests
     public void testCreate() throws Exception
     {
 
-        Pilot pilot = new Pilot.Builder("12345")
-                .firstName("Thawhir")
+        Pilot pilot = new Pilot.Builder("Thawhir")
                 .lastName("Jakoet")
                 .address("15 Shiraaz Close")
                 .contact("021 123 4567")
@@ -40,15 +39,15 @@ public class testPilotCrudRepository extends AbstractTestNGSpringContextTests
     public void testRead() throws Exception
     {
         Pilot pilot = repository.findOne(id);
-        Assert.assertEquals("12345",pilot.getID());
+        Assert.assertEquals("Thawhir",pilot.getFirstName());
     }
 
     @Test(dependsOnMethods = "testRead")
     public void testUpdate() throws Exception
     {
         Pilot pilot = repository.findOne(id);
-        Pilot newPilot = new Pilot.Builder(pilot.getID())
-                .firstName("Thawhir")
+        Pilot newPilot = new Pilot.Builder(pilot.getFirstName())
+                .ID(id)
                 .lastName("Jakoet")
                 .address("15 Shiraaz Close")
                 .contact("021 123 4567")

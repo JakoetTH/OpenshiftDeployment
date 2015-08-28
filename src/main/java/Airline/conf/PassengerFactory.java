@@ -6,7 +6,8 @@ import java.util.List;
 
 public class PassengerFactory {
 
-    public static Passenger createPassenger(String ID,
+    public static Passenger createPassenger(String userName,
+                                            String password,
                                             String firstName,
                                             String lastName,
                                             String address,
@@ -14,7 +15,8 @@ public class PassengerFactory {
                                             List<Ticket> tickets)
     {
         Passenger passenger = new Passenger
-                .Builder(ID)
+                .Builder(userName)
+                .password(password)
                 .firstName(firstName)
                 .lastName(lastName)
                 .address(address)

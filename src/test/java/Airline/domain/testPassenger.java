@@ -15,22 +15,22 @@ public class testPassenger {
     @Before
     public void setUp()
     {
-        passenger = PassengerFactory.createPassenger("12345","Thawhir","Jakoet","15 Shiraaz Close","54321",tickets);
+        passenger = PassengerFactory.createPassenger("Redc","12345","Thawhir","Jakoet","15 Shiraaz Close","54321",tickets);
     }
     @Test
     public void testCreatePassenger() throws Exception
     {
-        Assert.assertEquals("12345",passenger.getID());
+        Assert.assertEquals("Redc",passenger.getUserName());
     }
     @Test
     public void testUpdatePassenger()
     {
         newPassenger = new Passenger
-                .Builder(passenger.getID())
+                .Builder(passenger.getUserName())
                 .copy(passenger)
                 .lastName("Samsodien").build();
 
-        Assert.assertEquals("12345",newPassenger.getID());
+        Assert.assertEquals("Redc",newPassenger.getUserName());
         Assert.assertEquals("Samsodien",newPassenger.getLastName());
     }
     @After

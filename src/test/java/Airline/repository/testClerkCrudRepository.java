@@ -14,7 +14,7 @@ import java.util.List;
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
 public class testClerkCrudRepository extends AbstractTestNGSpringContextTests{
-    private String id;
+    private Long id;
     private List<Ticket> tickets;
 
     @Autowired
@@ -23,8 +23,7 @@ public class testClerkCrudRepository extends AbstractTestNGSpringContextTests{
     @Test
     public void testCreate() throws Exception
     {
-        Clerk clerk = new Clerk.Builder("12345")
-                .firstName("Thawhir")
+        Clerk clerk = new Clerk.Builder("Thawhir")
                 .lastName("Jakoet")
                 .address("15 Shiraaz Close")
                 .contact("021 123 4567")
@@ -40,15 +39,15 @@ public class testClerkCrudRepository extends AbstractTestNGSpringContextTests{
     public void testRead() throws Exception
     {
         Clerk clerk = repository.findOne(id);
-        Assert.assertEquals("12345",clerk.getID());
+        Assert.assertEquals("Thawhir",clerk.getFirstName());
     }
 
     @Test(dependsOnMethods = "testRead")
     public void testUpdate() throws Exception
     {
         Clerk clerk = repository.findOne(id);
-        Clerk newClerk = new Clerk.Builder(clerk.getID())
-                .firstName("Thawhir")
+        Clerk newClerk = new Clerk.Builder(clerk.getFirstName())
+                .ID(id)
                 .lastName("Jakoet")
                 .address("15 Shiraaz Close")
                 .contact("021 765 4321")

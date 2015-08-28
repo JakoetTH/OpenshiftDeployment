@@ -6,16 +6,14 @@ import Airline.domain.Pilot;
  */
 public class PilotFactory {
 
-    public static Pilot createPilot(String ID,
-                                            String firstName,
+    public static Pilot createPilot(String firstName,
                                             String lastName,
                                             String address,
                                             String contact,
                                             String rank)
     {
         Pilot pilot = new Pilot
-                .Builder(ID)
-                .firstName(firstName)
+                .Builder(firstName)
                 .lastName(lastName)
                 .address(address)
                 .contact(contact)

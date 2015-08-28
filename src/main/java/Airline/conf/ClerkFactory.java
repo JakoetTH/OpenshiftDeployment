@@ -6,8 +6,7 @@ import java.util.List;
 
 public class ClerkFactory {
 
-    public static Clerk createClerk(String ID,
-                                            String firstName,
+    public static Clerk createClerk(String firstName,
                                             String lastName,
                                             String address,
                                             String contact,
@@ -15,8 +14,7 @@ public class ClerkFactory {
                                             List<Ticket> tickets)
     {
         Clerk clerk = new Clerk
-                .Builder(ID)
-                .firstName(firstName)
+                .Builder(firstName)
                 .lastName(lastName)
                 .address(address)
                 .contact(contact)

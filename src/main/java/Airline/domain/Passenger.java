@@ -10,7 +10,10 @@ import java.util.List;
 @Entity
 public class Passenger implements PersonDetails, Serializable{
     @Id
-    private String ID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ID;
+    private String userName;
+    private String password;
     private String firstName;
     private String lastName;
     private String address;
@@ -27,6 +30,8 @@ public class Passenger implements PersonDetails, Serializable{
     public Passenger(Builder builder)
     {
         this.ID=builder.ID;
+        this.userName=builder.userName;
+        this.password=builder.password;
         this.firstName=builder.firstName;
         this.lastName=builder.lastName;
         this.address=builder.address;
@@ -34,9 +39,16 @@ public class Passenger implements PersonDetails, Serializable{
         this.tickets=builder.tickets;
     }
     @Override
-    public String getID()
+    public Long getID()
     {
         return this.ID;
+    }
+    public String getUserName() {
+        return this.userName;
+    }
+    public String getPassword()
+    {
+        return this.password;
     }
     @Override
     public String getFirstName()
@@ -64,16 +76,30 @@ public class Passenger implements PersonDetails, Serializable{
 
     public static class Builder
     {
-        private String ID;
+        private Long ID;
+        private String userName;
+        private String password;
         private String firstName;
         private String lastName;
         private String address;
         private String contact;
         private List<Ticket> tickets;
 
-        public Builder(String ID)
+        public Builder(String userName)
+        {
+            this.userName=userName;
+        }
+
+        public Builder ID(Long ID)
         {
             this.ID=ID;
+            return this;
+        }
+
+        public Builder password(String password)
+        {
+            this.password=password;
+            return this;
         }
 
         public Builder firstName(String firstName)
@@ -109,6 +135,8 @@ public class Passenger implements PersonDetails, Serializable{
         public Builder copy(Passenger passenger)
         {
             this.ID=passenger.getID();
+            this.userName=passenger.getUserName();
+            this.password=passenger.getPassword();
             this.firstName=passenger.getFirstName();
             this.lastName=passenger.getLastName();
             this.address=passenger.getAddress();
