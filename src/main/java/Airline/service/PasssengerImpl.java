@@ -10,9 +10,6 @@ import Airline.domain.Passenger;
 import Airline.domain.Ticket;
 import Airline.repository.PassengerRepository;
 
-/**
- * Created by Thawhir on 2015/08/28.
- */
 @Service
 public class PasssengerImpl implements PassengerService{
     @Autowired
