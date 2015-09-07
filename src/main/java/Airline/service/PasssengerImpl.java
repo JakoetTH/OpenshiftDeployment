@@ -24,9 +24,7 @@ public class PasssengerImpl implements PassengerService{
         for(Passenger pas : passengers)
         {
             if(pas.getUserName().equalsIgnoreCase(username))
-            {
                 passenger = pas;
-            }
         }
         return passenger;
     }

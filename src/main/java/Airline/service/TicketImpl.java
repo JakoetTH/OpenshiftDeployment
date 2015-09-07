@@ -44,6 +44,7 @@ public class TicketImpl implements TicketService {
         Flight updatedFlight = new Flight
                                         .Builder(flight.getDepartureLocation())
                                         .copy(flight)
+                                        .seatsAvailable(flight.getSeatsAvailable()-1)
                                         .tickets(ftickets)
                                         .build();
 
