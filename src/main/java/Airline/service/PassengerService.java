@@ -7,5 +7,5 @@ import Airline.domain.Passenger;
  */
 public interface PassengerService {
     public Passenger getPassenger(String ID);
-    public void newPassenger();
+    public void newPassenger(String username, String password, String firstname, String lastname, String address, String contact);
 }

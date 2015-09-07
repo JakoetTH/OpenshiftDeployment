@@ -1,5 +1,6 @@
 package Airline.service;
 
+import Airline.domain.Passenger;
 import Airline.domain.Ticket;
 import Airline.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +16,9 @@ public class TicketImpl implements TicketService {
     @Autowired
     private TicketRepository repository;
     @Override
-    public List<Ticket> getPassengerTickets(String ID)
+    public List<Ticket> getPassengerTickets(Passenger passenger)
     {
-        Iterable<Ticket> ittickets = repository.findAll();
-        List<Ticket> tickets = new ArrayList<Ticket>();
-        for (Ticket ticket : ittickets)
-        {
-            if(ticket.getID().equals(ID))
-                tickets.add(ticket);
-        }
+        List<Ticket> tickets = passenger.getTickets();
         return tickets;
     }
 
