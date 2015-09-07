@@ -21,13 +21,13 @@ public class TicketImpl implements TicketService {
     private TicketRepository repositoryTicket;
     private PassengerRepository repositoryPassenger;
     private FlightRepository repositoryFlight;
-    @Override
+    @Override//Read
     public List<Ticket> getPassengerTickets(Passenger passenger)
     {
         List<Ticket> tickets = passenger.getTickets();
         return tickets;
     }
-    @Override
+    @Override//Create
     public void newTicket(Passenger passenger, Flight flight, float price, String ticketclass)
     {
         Ticket ticket = TicketFactory.createTicket(price, ticketclass);
@@ -35,9 +35,9 @@ public class TicketImpl implements TicketService {
         List<Ticket> ptickets = passenger.getTickets();
         ptickets.add(ticket);
         Passenger updatedPassenger = new Passenger
-                .Builder(passenger.getUserName())
-                .copy(passenger)
-                .tickets(ptickets).build();
+                                              .Builder(passenger.getUserName())
+                                              .copy(passenger)
+                                              .tickets(ptickets).build();
         //Add ticket to corresponding flight's ticket List
         List<Ticket> ftickets = flight.getTickets();
         ftickets.add(ticket);
@@ -52,7 +52,7 @@ public class TicketImpl implements TicketService {
         repositoryFlight.save(updatedFlight);
         repositoryTicket.save(ticket);
     }
-    @Override
+    @Override//Delete
     public void deleteTicket(Ticket ticket)
     {
         Iterable<Passenger> passengers = repositoryPassenger.findAll();
