@@ -18,6 +18,7 @@ public class Flight implements FlightDisplay, Serializable{
     private Date arrivalTime;
     private String departureLocation;
     private String arrivalLocation;
+    private int seatsAvailable;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name="flight_id")
     private List<Ticket> tickets;
@@ -34,6 +35,7 @@ public class Flight implements FlightDisplay, Serializable{
         this.arrivalTime=builder.arrivalTime;
         this.departureLocation=builder.departureLocation;
         this.arrivalLocation=builder.arrivalLocation;
+        this.seatsAvailable=builder.seatsAvailable;
         this.tickets=builder.tickets;
     }
     @Override
@@ -62,6 +64,11 @@ public class Flight implements FlightDisplay, Serializable{
         return this.arrivalLocation;
     }
     @Override
+    public int getSeatsAvailable()
+    {
+        return this.seatsAvailable;
+    }
+    @Override
     public String displayFlightTimes()
     {
         return "";
@@ -84,6 +91,7 @@ public class Flight implements FlightDisplay, Serializable{
         private Date arrivalTime;
         private String departureLocation;
         private String arrivalLocation;
+        private int seatsAvailable;
         private List<Ticket> tickets;
 
         public Builder(String departureLocation)
@@ -115,6 +123,12 @@ public class Flight implements FlightDisplay, Serializable{
             return this;
         }
 
+        public Builder seatsAvailable(int seatsAvailable)
+        {
+            this.seatsAvailable=seatsAvailable;
+            return this;
+        }
+
         public Builder tickets(List<Ticket> tickets)
         {
             this.tickets=tickets;
@@ -128,6 +142,7 @@ public class Flight implements FlightDisplay, Serializable{
             this.arrivalTime=flight.getArrivalTime();
             this.departureLocation=flight.getDepartureLocation();
             this.arrivalLocation=flight.getArrivalLocation();
+            this.seatsAvailable=flight.getSeatsAvailable();
             this.tickets=flight.getTickets();
             return this;
         }

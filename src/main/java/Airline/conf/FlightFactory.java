@@ -12,6 +12,7 @@ public class FlightFactory {
                                     Date arrivalTime,
                                     String departureLocation,
                                     String arrivalLocation,
+                                      int seatsAvailable,
                                     List<Ticket> tickets)
     {
         Flight flight = new Flight
@@ -19,6 +20,7 @@ public class FlightFactory {
                 .departureTime(departureTime)
                 .arrivalTime(arrivalTime)
                 .arrivalLocation(arrivalLocation)
+                .seatsAvailable(seatsAvailable)
                 .tickets(tickets)
                 .build();
         return flight;

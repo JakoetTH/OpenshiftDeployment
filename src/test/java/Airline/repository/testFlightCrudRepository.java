@@ -29,6 +29,7 @@ public class testFlightCrudRepository extends AbstractTestNGSpringContextTests{
                 .departureTime(date)
                 .arrivalTime(date)
                 .arrivalLocation("Cape Town")
+                .seatsAvailable(200)
                 .tickets(tickets)
                 .build();
         repository.save(flight);
@@ -52,6 +53,7 @@ public class testFlightCrudRepository extends AbstractTestNGSpringContextTests{
                 .departureTime(date)
                 .arrivalTime(date)
                 .arrivalLocation("London")
+                .seatsAvailable(200)
                 .tickets(tickets)
                 .build();
         repository.save(newFlight);

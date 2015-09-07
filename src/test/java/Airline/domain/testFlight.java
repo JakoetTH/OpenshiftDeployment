@@ -16,7 +16,7 @@ public class testFlight {
     @Before
     public void setUp()
     {
-        flight = FlightFactory.createFlight(date,date,"Johannesburg","Belgium",tickets);
+        flight = FlightFactory.createFlight(date,date,"Johannesburg","Belgium",200,tickets);
     }
     @Test
     public void testCreateFlight() throws Exception

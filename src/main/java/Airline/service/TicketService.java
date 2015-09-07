@@ -1,5 +1,6 @@
 package Airline.service;
 
+import Airline.domain.Flight;
 import Airline.domain.Passenger;
 import Airline.domain.Ticket;
 
@@ -10,5 +11,6 @@ import java.util.List;
  */
 public interface TicketService {
     public List<Ticket> getPassengerTickets(Passenger passenger);
+    public void newTicket(Passenger passenger, Flight flight, float price, String ticketclass);
 
 }

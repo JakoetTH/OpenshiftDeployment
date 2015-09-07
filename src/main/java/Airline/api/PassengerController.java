@@ -19,13 +19,13 @@ import Airline.service.PassengerService;
 @RestController
 @RequestMapping("/api/**")
 public class PassengerController {
-    @Autowired
-    private PassengerService service;
-    @RequestMapping(value = "/passenger/create",method = RequestMethod.POST)
-    public ResponseEntity<Void> createPassenger(@RequestBody Passenger passenger, UriComponentsBuilder ucBuilder)
-    {
-        service.newPassenger();
-    }
+    //@Autowired
+   // private PassengerService service;
+   // @RequestMapping(value = "/passenger/create",method = RequestMethod.POST)
+   // public ResponseEntity<Void> createPassenger(@RequestBody Passenger passenger, UriComponentsBuilder ucBuilder)
+   // {
+   //     service.newPassenger();
+   // }
 //    public ResponseEntity<Void> createSubject(@RequestBody Subject subject,    UriComponentsBuilder ucBuilder) {
 //        System.out.println("Creating Subject " + subject.getName());
 
