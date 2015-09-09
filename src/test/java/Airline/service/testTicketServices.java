@@ -1,8 +1,9 @@
 package Airline.service;
 
- /* Airline.App;
+import Airline.App;
+import Airline.conf.PassengerFactory;
+import Airline.domain.Passenger;
 import Airline.domain.Ticket;
-import Airline.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -18,45 +19,43 @@ import java.util.List;
 @WebAppConfiguration
 public class testTicketServices extends AbstractTestNGSpringContextTests{
     @Autowired
-    private TicketRepository repository;
-    @Autowired
     private TicketImpl service;
 
-    private String id;
+    private Passenger passenger;
     private List<Ticket> tickets;
     @BeforeMethod
     public void setUp()
     {
         tickets = new ArrayList<Ticket>();
-        id = "12345";
     }
 
     @Test
     public void testCreateTickets()
     {
-        Ticket ticket = new Ticket.Builder("12345")
+        Ticket ticket = new Ticket.Builder("First Class")
                 .price(200)
-                .ticketClass("First Class")
                 .build();
-        Ticket tickettwo = new Ticket.Builder("12346")
-                .price(200)
-                .ticketClass("First Class")
+        Ticket tickettwo = new Ticket.Builder("Business Class")
+                .price(300)
                 .build();
 
         tickets.add(ticket);
-        repository.save(ticket);
         Assert.assertNotNull(ticket);
 
         tickets.add(tickettwo);
-        repository.save(tickettwo);
         Assert.assertNotNull(tickettwo);
-
     }
 
     @Test(dependsOnMethods = "testCreateTickets")
+    public void testCreatePassenger()
+    {
+        passenger = PassengerFactory.createPassenger("Redc","12345","Thawhir","Jakoet","15 Shiraaz Close","083 477 1207", tickets);
+    }
+
+    @Test(dependsOnMethods = "testCreatePassenger")
     public void testGetPassengerTickets()
     {
-        List<Ticket> tickets = service.getPassengerTickets(id);
-        Assert.assertTrue(tickets.size() == 1);
+        List<Ticket> tickets = service.getPassengerTickets(passenger);
+        Assert.assertEquals(tickets, passenger.getTickets());
     }
-}*/
+}
