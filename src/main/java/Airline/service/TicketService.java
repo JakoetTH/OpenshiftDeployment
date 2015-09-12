@@ -12,6 +12,6 @@ import java.util.List;
 public interface TicketService {
     public List<Ticket> getPassengerTickets(Passenger passenger);
     public void newTicket(Passenger passenger, Flight flight, float price, String ticketclass);
-    public void deleteTicket(Ticket ticket);
+    public void deleteTicket(Long id);
 
 }

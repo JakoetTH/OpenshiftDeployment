@@ -18,9 +18,11 @@ import java.util.List;
 @Service
 public class TicketImpl implements TicketService {
     @Autowired
-    private TicketRepository repositoryTicket;
-    private PassengerRepository repositoryPassenger;
-    private FlightRepository repositoryFlight;
+    TicketRepository repositoryTicket;
+    @Autowired
+    PassengerRepository repositoryPassenger;
+    @Autowired
+    FlightRepository repositoryFlight;
     @Override//Read
     public List<Ticket> getPassengerTickets(Passenger passenger)
     {
@@ -47,46 +49,45 @@ public class TicketImpl implements TicketService {
                                         .seatsAvailable(flight.getSeatsAvailable() - 1)
                                         .tickets(ftickets)
                                         .build();
-
+        repositoryTicket.save(ticket);
         repositoryPassenger.save(updatedPassenger);
         repositoryFlight.save(updatedFlight);
-        repositoryTicket.save(ticket);
     }
     @Override//Delete
-    public void deleteTicket(Ticket ticket)
+    public void deleteTicket(Long id)
     {
         Iterable<Passenger> passengers = repositoryPassenger.findAll();
         Iterable<Flight> flights = repositoryFlight.findAll();
+        Ticket ticket = repositoryTicket.findOne(id);
         List<Ticket> ptickets;
         List<Ticket> ftickets;
         //Iterates through passenger objects and deletes ticket from existing passenger
-        for(Passenger pas : passengers)
+        if(ticket!=null)
         {
-            ptickets = pas.getTickets();
-                if(ptickets.contains(ticket))
-                {
+            for (Passenger pas : passengers) {
+                ptickets = pas.getTickets();
+                if (ptickets.contains(ticket)) {
                     ptickets.remove(ticket);
                     pas = new Passenger
-                                    .Builder(pas.getUserName())
-                                    .copy(pas)
-                                    .tickets(ptickets).build();
+                            .Builder(pas.getUserName())
+                            .copy(pas)
+                            .tickets(ptickets).build();
                     repositoryPassenger.save(pas);
                 }
-        }
-        //Iterates through flight objects and deletes ticket from existing flight
-        for(Flight fli : flights)
-        {
-            ftickets = fli.getTickets();
-                if(ftickets.contains(ticket))
-                {
+            }
+            //Iterates through flight objects and deletes ticket from existing flight
+            for (Flight fli : flights) {
+                ftickets = fli.getTickets();
+                if (ftickets.contains(ticket)) {
                     ftickets.remove(ticket);
                     fli = new Flight
-                                .Builder(fli.getDepartureLocation())
-                                .copy(fli)
-                                .tickets(ftickets).build();
+                            .Builder(fli.getDepartureLocation())
+                            .copy(fli)
+                            .tickets(ftickets).build();
                     repositoryFlight.save(fli);
                 }
+            }
+            repositoryTicket.delete(ticket);
         }
-        repositoryTicket.delete(ticket);
     }
 }
