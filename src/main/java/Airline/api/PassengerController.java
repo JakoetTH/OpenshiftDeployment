@@ -45,7 +45,7 @@ public class PassengerController {
      //   headers.setLocation(ucBuilder.path("/subject/{id}").buildAndExpand(subject.getId()).toUri());
      //   return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
   //  }
-    @RequestMapping(value = "passenger/{id}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/passenger/{id}",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Passenger> getPassenger(@PathVariable("id") long id)
     {
         Passenger passenger = passengerRepository.findOne(id);
