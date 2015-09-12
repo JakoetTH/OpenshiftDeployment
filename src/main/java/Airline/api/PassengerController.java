@@ -50,7 +50,7 @@ public class PassengerController {
     {
         Passenger passenger = passengerRepository.findOne(id);
         if(passenger==null)
-            return new ResponseEntity<Passenger>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Passenger>(HttpStatus.FOUND);
         return new ResponseEntity<Passenger>(passenger, HttpStatus.OK);
     }
 }
