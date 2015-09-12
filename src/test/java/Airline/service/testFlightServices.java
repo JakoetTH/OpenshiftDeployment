@@ -1,17 +1,7 @@
 package Airline.service;
 
-import Airline.App;
-import Airline.conf.FlightFactory;
-import Airline.conf.PassengerFactory;
-import Airline.domain.Flight;
-import Airline.domain.Passenger;
-import Airline.domain.Ticket;
-import Airline.repository.FlightRepository;
-import Airline.repository.PassengerRepository;
-import Airline.repository.TicketRepository;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -24,18 +14,30 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import Airline.App;
+import Airline.conf.FlightFactory;
+import Airline.conf.PassengerFactory;
+import Airline.domain.Flight;
+import Airline.domain.Passenger;
+import Airline.domain.Ticket;
+import Airline.repository.FlightRepository;
+import Airline.repository.PassengerRepository;
+import Airline.repository.TicketRepository;
+
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
-public class testTicketServices extends AbstractTestNGSpringContextTests{
-    private Passenger passenger;
-    private Flight flight;
+public class testFlightServices extends AbstractTestNGSpringContextTests{
+    private List<Flight> flights;
     private List<Ticket> tickets;
+    private Flight flight;
     private Ticket ticket;
     private Ticket tickettwo;
+    private Passenger passenger;
     private Date date = new Date();
 
+
     @Autowired
-    TicketImpl ticketService;
+    FlightImpl flightService;
     @Autowired
     TicketRepository ticketRepository;
     @Autowired
@@ -43,14 +45,10 @@ public class testTicketServices extends AbstractTestNGSpringContextTests{
     @Autowired
     PassengerRepository passengerRepository;
 
-
-
-    public testTicketServices() {
-    }
-
     @BeforeMethod
     public void setUp()
     {
+        flights = new ArrayList<Flight>();
         tickets = new ArrayList<Ticket>();
     }
 
@@ -75,7 +73,7 @@ public class testTicketServices extends AbstractTestNGSpringContextTests{
     @Test(dependsOnMethods = "testCreateTickets")
     public void testCreatePassenger()
     {
-        passenger = PassengerFactory.createPassenger("Redc","12345","Thawhir","Jakoet","15 Shiraaz Close","083 477 1207", tickets);
+        passenger = PassengerFactory.createPassenger("Redc", "12345", "Thawhir", "Jakoet", "15 Shiraaz Close", "083 477 1207", tickets);
         Assert.assertNotNull(passenger);
         passengerRepository.save(passenger);
     }
@@ -89,32 +87,17 @@ public class testTicketServices extends AbstractTestNGSpringContextTests{
     }
 
     @Test(dependsOnMethods = "testCreateFlight")
-    public void testGetPassengerTickets()
+    public void testGetAllFlights()
     {
-        List<Ticket> tickets = ticketService.getPassengerTickets(passenger);
-        Assert.assertEquals(tickets, passenger.getTickets());
+        long count = flightRepository.count();
+        flights = flightService.getAllFlights();
+        Assert.assertTrue(flights.size() == count);
     }
 
-    @Test(dependsOnMethods = "testGetPassengerTickets")
-    public void testNewTicket()
+    @Test(dependsOnMethods = "testGetAllFlights")
+    public void testGetAllPassengersFlights()
     {
-        long count = ticketRepository.count();
-        ticketService.newTicket(passenger,flight,200,"Third Class");
-        Assert.assertNotEquals(count, ticketRepository.count());
-    }
-
-    @Test(dependsOnMethods = "testNewTicket")
-    public void testDeleteTicket()
-    {
-        long count = ticketRepository.count();
-        Iterable<Ticket> itickets = ticketRepository.findAll();
-        Long maxID = Long.parseLong("0");
-        for(Ticket tic: itickets)
-        {
-            if(tic.getID()>maxID)
-                maxID = tic.getID();
-        }
-        ticketService.deleteTicket(maxID);
-        Assert.assertNotEquals(count,ticketRepository.count());
+        flights = flightService.getAllPassengersFlights(passenger);
+        Assert.assertNotNull(flights);
     }
 }

@@ -13,7 +13,7 @@ import Airline.domain.Ticket;
 
 
 @Service
-public class PasssengerImpl implements PassengerService{
+public class PassengerImpl implements PassengerService{
     @Autowired
     private PassengerRepository repository;
     @Override//Read
