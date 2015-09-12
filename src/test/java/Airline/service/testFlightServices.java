@@ -1,7 +1,5 @@
 package Airline.service;
 
-import com.sun.javafx.scene.control.skin.VirtualFlow;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
