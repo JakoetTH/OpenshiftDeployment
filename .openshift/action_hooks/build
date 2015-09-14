@@ -1,4 +1,2 @@
-<?php
-echo "Are you doing this";
-
-?>
+echo "In build action hook";
+echo $OPENSHIFT_REPO_DIR;
