@@ -1,2 +1,0 @@
-echo "In build action hook";
-$ cd $OPENSHIFT_REPO_DIR;
