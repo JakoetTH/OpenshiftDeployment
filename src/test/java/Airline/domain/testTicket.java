@@ -23,12 +23,11 @@ public class testTicket {
     public void testUpdateTicket()
     {
         newTicket = new Ticket
-                .Builder(ticket.getTicketClass())
+                .Builder("Standard")
                 .copy(ticket)
-                .price(122).build();
+                .build();
 
-        Assert.assertEquals("Business",newTicket.getTicketClass());
-        Assert.assertEquals(122,newTicket.getPrice());
+        Assert.assertEquals("Standard",newTicket.getTicketClass());
     }
     @After
     public void tearDown()
