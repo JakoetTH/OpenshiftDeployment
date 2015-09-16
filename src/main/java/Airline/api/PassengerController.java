@@ -88,7 +88,7 @@ public class PassengerController {
     {
         List<Flight> flights = flightService.getAllFlights();
         if(flights==null)
-            return new ResponseEntity<List<Flight>>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<List<Flight>>(HttpStatus.FOUND);
         return new ResponseEntity<List<Flight>>(flights, HttpStatus.OK);
     }
 
